@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:contentDescription="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <TextView
+            android:id="@+id/createrbs_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/create_body_review"
+            android:textAlignment="center"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/rbs_create"
+            android:layout_width="55dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/rbs_delete"
+            android:layout_width="55dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <EditText
+                android:id="@+id/rbs_skin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/skin"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/rbs_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_skin"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:hint="@string/head"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_eyes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_head"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/eyes"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_ears"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_eyes"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/ears"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_nose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_ears"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/nose"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_mouth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_nose"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/mouth"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_neck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_mouth"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/neck"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_chest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_neck"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/chest"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_respiratory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_chest"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/respiratory"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_cardiac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_respiratory"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/cardiac"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_gastrointestinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_cardiac"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/gastrointestinal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_gynecologic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_gastrointestinal"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/gynecologic"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_musculoskeletal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_gynecologic"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/musculoskeletal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_peripheral_vascular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_musculoskeletal"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/peripheral_vascular"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_neurologic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_peripheral_vascular"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/neurologic"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_hematologic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_neurologic"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/hematologic"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_endocrine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_hematologic"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/endocrine"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/rbs_psychiatric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rbs_endocrine"
+                android:background="@drawable/username"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/psychiatric"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

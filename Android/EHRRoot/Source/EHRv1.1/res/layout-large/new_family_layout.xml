@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:contentDescription="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/new_family_history"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/plus_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:contentDescription="@string/app_name"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/name_fam"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/username"
+        android:ems="10"
+        android:hint="@string/name"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:textSize="30sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/relation_fam"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/name_fam"
+        android:background="@drawable/username"
+        android:ems="10"
+        android:hint="@string/relation"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:textSize="30sp" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:fadeScrollbars="false"
+        android:layout_below="@+id/relation_fam" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" >
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/depression"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/bipolar"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/anxiety"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/alzheimer"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/learning_disorders"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox7"
+                android:layout_width="fill_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/ADHD"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:button="@drawable/check"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="60dp"
+                android:paddingTop="5dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/alcohol_substance_abuse"
+                android:textSize="30sp" />
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right" >
+
+                <CheckBox
+                    android:id="@+id/checkBox8"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_alignParentLeft="true"
+                    android:button="@drawable/check"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="60dp"
+                    android:paddingTop="5dp"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    android:text="@string/cancer"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/small_box"
+                    android:ems="10"
+                    android:hint="@string/name"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:singleLine="true"
+                    android:textSize="30sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:orientation="vertical" >
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/otherText"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/username"
+                android:ems="10"
+                android:hint="@string/other"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:singleLine="true"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/originalVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scrollView1"
+        android:text="@string/choose_condition"
+        android:textSize="30sp" />
+
+</RelativeLayout>

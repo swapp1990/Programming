@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#323232"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignRight="@+id/scrollView1"
+        android:src="@drawable/picture" />
+
+     <ScrollView
+         android:id="@+id/scrollView1"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/imageView1"
+         android:paddingTop="20dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#f2f2f2"
+            android:orientation="vertical" >
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="Immunization"
+                android:textColor="#323232"
+                android:textColorHint="#00000000" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="Disease List"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="Medical history"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+            
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="Other Info"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+            
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="PMH"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="CMH"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox7"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="PSH"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox8"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="RAD"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox10"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="PRT"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox9"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="LMG"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+            <CheckBox
+                android:id="@+id/checkBox11"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/check_box2"
+                android:text="TAC"
+                android:textColor="#323232" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Some Detail" />
+
+        </LinearLayout>
+    </ScrollView>
+
+      <Button
+          android:id="@+id/btnClick2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/textView8"
+          android:layout_toRightOf="@+id/textView"
+          android:onClick="choose"
+          android:text="View" />
+
+      <TextView
+          android:id="@+id/textView4"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_marginRight="29dp"
+          android:layout_toLeftOf="@+id/textView"
+          android:text="@string/profilename"
+          android:textColor="#ffffffff"
+          android:textColorHint="#ffffffff"
+          android:textSize="17sp" />
+
+      <TextView
+          android:id="@+id/textView5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/textView4"
+          android:layout_below="@+id/textView4"
+          android:layout_marginLeft="14dp"
+          android:text="@string/gender"
+          android:textColor="#ffffffff" />
+
+      <TextView
+          android:id="@+id/textView8"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/textView5"
+          android:layout_below="@+id/textView5"
+          android:text="Country"
+          android:textColor="#ffffffff" />
+
+      <TextView
+          android:id="@+id/textView6"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/textView8"
+          android:layout_below="@+id/textView8"
+          android:text="BOD"
+          android:textColor="#ffffffff" />
+
+      <TextView
+          android:id="@+id/textView7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/textView6"
+          android:layout_alignBottom="@+id/textView6"
+          android:layout_toLeftOf="@+id/textView"
+          android:text="@string/age"
+          android:textColor="#ffffffff" />
+
+</RelativeLayout>

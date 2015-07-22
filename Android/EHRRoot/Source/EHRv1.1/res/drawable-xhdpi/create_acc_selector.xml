@@ -1,0 +1,8 @@
+<selector 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/create_acc_btn_click"
+          android:state_pressed="true" />
+    <item android:drawable="@drawable/create_acc_btn"
+          android:state_focused="true" />
+    <item android:drawable="@drawable/create_acc_btn" />
+</selector>

@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    android:layoutMode="opticalBounds" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <ImageButton
+            android:id="@+id/selectionlog_cloud_btn"
+            android:layout_width="68dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="68dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_btn_selector" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/consultation_report"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="vertical" >
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp" >
+
+                <LinearLayout
+                    android:id="@+id/physician_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/type_box"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="7dp" >
+
+                    <TextView
+                        android:id="@+id/physicianinfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal|center"
+                        android:paddingBottom="10dp"
+                        android:text="@string/physician_info"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/physicianname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/physician_name"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/physicianorganization"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/physician_organization"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chiefcomplaint_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <ImageButton
+                    android:id="@+id/AddChiefComplaintButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/chiefcomplaint_list_layout"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+
+                <TextView
+                    android:id="@+id/header_chiefcomplaint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/AddChiefComplaintButton"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="6dp"
+                    android:text="@string/chief_complaint"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="19sp" />
+
+                <LinearLayout
+                    android:id="@+id/chiefcomplaint_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header_chiefcomplaint"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/allergy_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <ImageButton
+                    android:id="@+id/AddAllergyButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/allergy_list_layout"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+
+                <TextView
+                    android:id="@+id/header_allergy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/AddAllergyButton"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="6dp"
+                    android:text="@string/allergies"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="19sp" />
+
+                <LinearLayout
+                    android:id="@+id/allergy_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/header_allergy"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/medication_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <TextView
+                    android:id="@+id/header_medication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/medication_list_layout"
+                    android:layout_alignTop="@+id/AddMedicationButton"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical|center_horizontal|center"
+                    android:paddingBottom="6dp"
+                    android:text="@string/medication"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="19sp" />
+
+                <ImageButton
+                    android:id="@+id/AddMedicationButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/medication_list_layout"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+
+                <LinearLayout
+                    android:id="@+id/medication_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/AddMedicationButton"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp" >
+
+                <LinearLayout
+                    android:id="@+id/socialhistory_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bigger_white_box"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="7dp" >
+
+                    <TextView
+                        android:id="@+id/header_socialhistory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal|center"
+                        android:paddingBottom="10dp"
+                        android:text="@string/social_history"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/maritalstatus_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/marital_status"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/occupation_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/occupation"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/coffeeconsumption_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/coffee_consumption"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/tobaccouse_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/tobacco_use"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/alcoholuse_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/alcohol_use"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/druguse_sh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/drug_use"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp" >
+
+                <LinearLayout
+                    android:id="@+id/rbs_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/type_box"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="7dp" >
+
+                    <TextView
+                        android:id="@+id/header_rbs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal|center"
+                        android:paddingBottom="6dp"
+                        android:text="@string/review_of_body_systems"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/textbox_rbs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/username"
+                        android:ems="10"
+                        android:hint="@string/click_to_edit"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:textSize="19sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp" >
+
+                <LinearLayout
+                    android:id="@+id/vitalsigns_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bigger_white_box"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:paddingBottom="5dp" >
+
+                    <TextView
+                        android:id="@+id/header_vitalsigns"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal|center"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/vital_signs"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/pulse_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ems="10"
+                        android:hint="@string/bpm"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/respiratoryrate_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ems="10"
+                        android:hint="@string/respiratory_rate"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/systolicbp_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ems="10"
+                        android:hint="@string/systolic_blood_pressure"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/diastolicbp_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ems="10"
+                        android:hint="@string/diastolic_blood_pressure"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/bodytemp_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/body_temperature"
+                        android:inputType="number"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/height_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/height"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/weight_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp"
+                        android:imeOptions="actionDone" />
+
+                    <EditText
+                        android:id="@+id/bmi_vs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/username"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/BMI"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="12dp"
+                        android:singleLine="true"
+                        android:textSize="19sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/procedure_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <ImageButton
+                    android:id="@+id/AddProcedureButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/procedure_list_layout"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+
+                <TextView
+                    android:id="@+id/header_procedure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/procedure_list_layout"
+                    android:layout_alignTop="@+id/AddProcedureButton"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical|center_horizontal|center"
+                    android:paddingBottom="6dp"
+                    android:text="@string/procedure_history"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/procedure_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header_procedure"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/diagnosticfindings_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <TextView
+                    android:id="@+id/header_diagnosticfindings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/diagnosticfindings_list_layout"
+                    android:layout_alignTop="@+id/AddDiagnosticFindingsButton"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:paddingBottom="6dp"
+                    android:text="@string/diagnostic_findings"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/diagnosticfindings_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/AddDiagnosticFindingsButton"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/AddDiagnosticFindingsButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/immunization_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/type_box"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp" >
+
+                <ImageButton
+                    android:id="@+id/AddImmunizationButton"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/immunization_list_layout"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn_selector" />
+
+                <LinearLayout
+                    android:id="@+id/immunization_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/AddImmunizationButton"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="20dp" >
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/header_immunization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/AddImmunizationButton"
+                    android:layout_toLeftOf="@+id/AddImmunizationButton"
+                    android:paddingBottom="6dp"
+                    android:text="@string/Immunization"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="19sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp" >
+
+                <LinearLayout
+                    android:id="@+id/plan_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/type_box"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <TextView
+                        android:id="@+id/header_plan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal|center"
+                        android:paddingBottom="6dp"
+                        android:text="@string/assessment_and_plan"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/textbox_plan"
+                        android:layout_width="match_parent"
+                        android:layout_height="118dp"
+                        android:layout_gravity="top|left"
+                        android:background="#00000000"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:hint="@string/assessment_and_plan"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="5"
+                        android:minLines="5" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

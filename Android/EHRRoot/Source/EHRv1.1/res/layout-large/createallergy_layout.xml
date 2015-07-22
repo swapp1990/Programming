@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <ImageButton
+            android:id="@+id/alg_create"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/alg_delete"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+
+        <TextView
+            android:id="@+id/createalg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/add_allergy"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/alg_type"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/type"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/alg_reaction"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/alg_type"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/reaction"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/alg_severity"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/alg_reaction"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/severity"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/alg_lastoccurred"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/alg_severity"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/date_last_occurred"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/alg_treatment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/alg_lastoccurred"
+        android:background="@drawable/white_big_box"
+        android:ellipsize="end"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/treatment"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="7"
+        android:minLines="5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+</RelativeLayout>

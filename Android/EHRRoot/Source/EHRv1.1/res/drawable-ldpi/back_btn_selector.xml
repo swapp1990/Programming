@@ -1,0 +1,8 @@
+<selector 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/pushed_back"
+          android:state_pressed="true" />
+    <item android:drawable="@drawable/puffed_back"
+          android:state_focused="true" />
+    <item android:drawable="@drawable/puffed_back" />
+</selector>

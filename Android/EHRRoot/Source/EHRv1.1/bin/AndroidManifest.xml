@@ -1,0 +1,133 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ehrapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+	
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
+    <uses-permission android:name="com.google.android.gallery3d.permission.GALLERY_PROVIDER"/>
+
+   <supports-screens
+        android:anyDensity="true"
+   		android:largeScreens="true"
+   		android:normalScreens="true"
+    	android:smallScreens="true"
+    	android:xlargeScreens="true"  />
+    
+   
+    
+    <application
+        android:name=".Global"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        
+        <activity
+            android:name=".pageviewer.Page_Login"
+            android:label="@string/title_activity_page_view"
+            android:screenOrientation="portrait"
+		 >
+
+                    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+        </activity>
+    	
+        <activity 
+           android:name=".pageviewer.Page_CreateAccount" 
+           class=".pageviewer.Page_CreateAccount" 
+           android:label="Create Account"
+           android:screenOrientation="portrait"
+           android:windowSoftInputMode="stateHidden|adjustPan" >
+    	</activity>
+    	
+        <activity
+           android:name=".pageviewer.Page_Patient_History" 
+           class=".pageviewer.Page_Patient_History" 
+           android:label="Patient History"
+           android:screenOrientation="portrait">
+
+    	</activity>
+    	
+        <activity
+           android:name=".pageviewer.Page_CreateProfile" 
+           class=".pageviewer.Page_CreateProfile" 
+           android:label="Create Profile"
+           android:screenOrientation="portrait"
+           android:windowSoftInputMode="stateHidden|adjustResize" >
+    	</activity>
+    	
+        <activity
+           android:name="com.ehrapp.pageviewer.Page_ConsultationReport" 
+           class="com.ehrapp.pageviewer.Page_ConsultationReport" 
+           android:label="Consultation Report"
+           android:windowSoftInputMode="stateHidden|adjustResize"
+           android:screenOrientation="portrait">
+          
+    	</activity>
+    	
+        <activity
+           android:name=".pageviewer.Page_ForgotPassword" 
+           class=".pageviewer.Page_ForgotPassword" 
+           android:label="Forgot Password"
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+        <activity
+           android:name=".pageviewer.Page_Info" 
+           class=".pageviewer.Page_Info" 
+           android:label="Info Page"
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+        <activity
+           android:name=".pageviewer.sections.Sectionlog" 
+           class=".pageviewer.sections.Sectionlog" 
+           android:label="Section log"
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+    	 <activity
+           android:name=".pageviewer.sections.FullConsultationReport" 
+           class=".pageviewer.sections.FullConsultationReport" 
+           android:label="Full Consultation Report"
+          
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+    	<activity
+           android:name=".pageviewer.Page_FamilyHistory" 
+           class=".pageviewer.Page_FamilyHistory" 
+           android:label="Family History"
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+    	<activity
+           android:name=".pageviewer.Page_NewFamilyHistory" 
+           class=".pageviewer.Page_NewFamilyHistory" 
+           android:windowSoftInputMode="stateHidden|adjustPan"
+           android:label="NewFamilyHistoryInfo"
+           android:screenOrientation="portrait">
+    	</activity>
+    	
+    	<activity
+           android:name=".pageviewer.Page_EditFamilyHistory" 
+           class=".pageviewer.Page_EditFamilyHistory" 
+           android:label="EditFamilyHist"
+           android:windowSoftInputMode="stateHidden|adjustPan"
+           android:screenOrientation="portrait">
+    	</activity>
+    	 
+    </application>
+
+</manifest>

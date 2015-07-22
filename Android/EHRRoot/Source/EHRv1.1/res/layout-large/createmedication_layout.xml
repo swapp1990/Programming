@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    android:orientation="vertical"
+    android:textAlignment="center" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:contentDescription="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <TextView
+            android:id="@+id/createmedication_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="23dp"
+            android:text="@string/medication"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:id="@+id/med_create"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/DeleteMed"
+            android:layout_width="106dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/med_drug"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/drug"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/med_dosage"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med_drug"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/dosage"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/med_freq"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med_dosage"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/frequency"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/med_startdate"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med_freq"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/start_date"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/med_enddate"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med_startdate"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/end_date"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textSize="30sp" />
+
+</RelativeLayout>

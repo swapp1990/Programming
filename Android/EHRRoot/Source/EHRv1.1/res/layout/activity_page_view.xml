@@ -1,0 +1,194 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    tools:context=".MainActivity" >
+
+    <!-- Username and Password background -->
+
+
+    <!-- Username -->
+
+
+    <!-- Password -->
+
+
+    <!-- Create new account button -->
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <TextView
+            android:id="@+id/CreateNewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Login"
+            android:textSize="23sp" />
+    </RelativeLayout>
+
+    <!-- Forgot password button -->
+
+    <ImageButton
+        android:id="@+id/ForgotPassword"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_alignRight="@+id/Password"
+        android:layout_alignTop="@+id/CreateAccount"
+        android:layout_marginRight="34dp"
+        android:background="#00000000"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/forgot_pw_selector" />
+
+    <!-- Login button -->
+
+
+    <!-- Logo image -->
+
+    <EditText
+        android:id="@+id/Username"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:gravity="top|center_vertical"
+        android:hint="@string/username"
+        android:maxLength="10"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Username"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/password"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:textSize="20sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/login_btn_selector"
+        android:onClick="login" />
+
+    <ImageButton
+        android:id="@+id/CreateAccount"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/Login"
+        android:layout_toLeftOf="@+id/Login"
+        android:background="#00000000"
+        android:contentDescription="@string/app_name"
+        android:onClick="CreateAccount"
+        android:scaleType="fitCenter"
+        android:src="@drawable/create_acc_selector" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ForgotPassword"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo2" />
+
+    <ImageButton
+        android:id="@+id/infoBtn"
+        android:layout_width="50dp"
+        android:layout_height="70dp"
+        android:layout_alignBottom="@+id/logo"
+        android:layout_alignRight="@+id/ForgotPassword"
+        android:background="#00000000"
+        android:contentDescription="@string/app_name"
+        android:paddingBottom="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/i_btn_selector" />
+
+    <LinearLayout
+        android:id="@+id/translationLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="10dp" >
+
+        <ImageButton
+            android:id="@+id/engBtn"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/eng_translation_selector" />
+
+        <ImageButton
+            android:id="@+id/esBtn"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/es_translation_selector" />
+
+        <ImageButton
+            android:id="@+id/frBtn"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fr_translation_selector" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headRL"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        android:text="@string/main_layout" />
+
+</RelativeLayout>

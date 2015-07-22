@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4" >
+
+    <RelativeLayout
+        android:id="@+id/headRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bg_headbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:paddingTop="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_top" />
+
+        <ImageButton
+            android:id="@+id/iv_delete"
+            android:layout_width="68dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trash_btn_selector" />
+
+        <ImageButton
+            android:id="@+id/iv_create"
+            android:layout_width="68dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_btn_selector" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/createiv_title"
+            android:layout_centerHorizontal="true"
+            android:text="@string/vaccines"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/createiv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_delete"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dp"
+            android:text="@string/immunization"
+            android:textAlignment="center"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/iv_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_vaccine"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/type"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/iv_dose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_type"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/dose"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/iv_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_dose"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/age_administered"
+        android:inputType="number"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/iv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_age"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/date_administered"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/iv_lotnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iv_date"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/lot_number"
+        android:inputType="number"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/iv_vaccine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headRL"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/username"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/vaccine"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:textSize="19sp" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

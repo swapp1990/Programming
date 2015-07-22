@@ -1,0 +1,178 @@
+<resources>
+    <string name="app_name">EHR</string><string name="attempts">Attempts Left:</string><string name="action_settings">Configuración</string><string name="alcohol_use">Consumo del Alcohol</string><string name="assessment_and_plan">Evaluación y Plan</string><string name="add_allergy">Añadir Alergia</string><string name="age">Edad</string><string name="allergy">Alergia</string><string name="body_temperature">Temperatura Corporal (Grados Celsius)</string><string name="BMI">Indice de Masa Corporal</string><string name="bpm">Pulso (Latidos por Minuto)</string><string name="ConfirmPassword">Confirmar Contraseña</string><string name="capital_off">Femenino</string><string name="capital_on">Masculino</string><string name="create_new_account">Crear una Cuenta Nueva</string><string name="country">País</string><string name="click_to_edit">Haga clic en editar</string><string name="cancel">Cancelar</string><string name="chief_complaint">Motivo de Consulta</string><string name="consultation_report">Informe de la Consulta</string><string name="coffee_consumption">Consumo de Café</string><string name="dummy_section_text">Section %1d is just a dummy section.</string><string name="demo_external_activity">Demostración Actividad Externa</string><string name="demo_collection">Colección de Demostración</string><string name="date_of_birth">Fecha de Nacimiento</string><string name="drug_use">Uso de Drogas</string><string name="diagnostic_findings">Resultados del Diagnóstico</string><string name="diastolic_blood_pressure">Presión Arterial Diastólica</string><string name="duration_of_symptom">Duración de los Síntomas</string><string name="date">Fecha</string><string name="date_last_occurred">Fecha de la Ultima se Produjo</string><string name="dob">mm/dd/aaaa</string><string name="edit">editar</string><string name="firstname">Nombre</string><string name="gender">Sexo</string><string name="height">Altura (cm)</string><string name="hello_world">Historia Clínica Electrónica</string><string name="interpretation">Interpretación</string><string name="Immunization">Inmunización/Vacunas</string><string name="identified_on_cloud">En la Nube no Identificado</string><string name="Login">LOGIN</string><string name="list">Lista</string><string name="lastname">Apellido</string><string name="menu_settings">Configuración</string><string name="medium_text">Texto mediano</string><string name="medication">Medicación</string><string name="marital_status">Estado Civil</string><string name="or">O</string><string name="otc">Tratamiento de OTC</string><string name="occupation">Ocupación</string><string name="onset_of_symptom">Inicio del Síntoma</string><string name="password">Contraseña</string>
+    <string name="profilename">Nombre de Perfil</string><string name="profile_info">Información del Perfil</string><string name="physician_info">Información del Médico</string><string name="physician_name">Nombre</string><string name="physician_organization">Organización</string><string name="age_administered">Age Administered</string><string name="procedure_history">Historia del Procedimiento</string><string-array name="races_array">
+        <item>Haga clic para Seleccionar</item>
+        <item>Afroamericano</item>
+        <item>Asiático</item>
+        <item>Caucásico</item>
+        <item>Latina o Hispana</item>
+        <item>Indio Americano</item>
+        <item>Oriente Medio</item>
+    </string-array><string name="race">Raza</string><string name="recovery">Recuperación</string><string name="reminder">Recordatorio…</string><string name="review_of_body_systems">Revisión de Sistemas del Cuerpo</string><string name="respiratory_rate">Frecuencia Respiratoria</string><string name="reaction">Reacción</string><string name="result">Resultado / Descubrimiento</string><string name="SecurityQ">Pregunta de Seguridad</string><string name="SecurityA">Respuesta de Seguridad</string><string name="save">ahorrar</string><string name="setting">Configuración</string><string name="systolic_blood_pressure">Presión Arterial Sistólica</string><string name="severity">Intensidad</string><string name="social_history">Historia Social</string><string name="symptom">Síntoma</string><string name="treatment">Tratamiento</string><string name="title_activity_page_view">EHR</string><string name="tobacco_use">Uso de Tabaco</string>
+
+    
+    
+    
+	<string name="type">Tipo</string><string name="test">Prueba</string><string name="username">Nombre de Usuario</string>
+  	
+  	
+  	
+  	
+  	
+  	
+  	 
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <string name="using_cloud">Utilizar la Nube</string><string name="vital_signs">Signos Vitales</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <string name="vaccine">Vacuna</string><string name="weight">Peso (kg)</string>
+    
+    <string name="dose">Dosis</string>
+    
+    <string name="date_administered">Fecha Administrado</string>
+    <string name="lot_number">Número de Lote</string>
+    <string name="immunization">Inmunización/</string>
+    <string name="vaccines">Vacunas</string>
+    <string name="dosage">Dosis</string>
+    <string name="frequency">Frecuencia</string>
+    <string name="start_date">Fecha de Inicio</string>
+    <string name="end_date">Fecha de Finalización</string>
+    <string name="drug">Droga</string>
+    <string name="procedure">Procedimiento</string>
+    <string name="physician">Médico</string>
+    <string name="institution_location">Institución / Ubicación</string>
+    <string name="Result">Resultado</string>
+    <string name="skin">Piel</string>
+    <string name="head">Cabeza</string>
+    <string name="vision">Visión</string>
+    <string name="hearing">Audición</string>
+    <string name="nose">Nariz</string>
+    <string name="mouth">Boca</string>
+    <string name="neck">Cuello</string>
+    <string name="chest">Pecho</string>
+    <string name="respiratory">Respiratorio</string>
+    <string name="cardiovascular">Cardiovascular</string>
+    <string name="gastrointestinal">Gastrointestinal</string>
+    <string name="gynecologic">Ginecológico</string>
+    <string name="musculoskeletal">Trastornos musculoesqueléticos</string>
+    <string name="peripheral_vascular">Vascular</string>
+    <string name="neurologic">Neurológico</string>
+    <string name="hematologic">Hematológicas</string>
+    <string name="endocrine">Endocrino</string>
+    <string name="psychiatric">Psiquiátrico</string>
+    <string name="urological">Urología</string>
+    <string name="create_body_review">Crear Cuerpo Examen</string>
+    <string name="family_history">Antecedentes Familiares</string>
+    <string name="textview">TextView</string>
+    <string name="text">Fecha: el Tipo, el Tiempo de Reacción, la Gravedad, la Fecha de la última se Produjo, el Tratamiento</string>
+    <string name="vital_signs_text">Fecha: Pulso, Fréquence Muerto, Présion Systolique Estaba Equivocada, la Ber Diastolique Estaba Equivocada, la Température du Corps, Talla, Poids, IMC</string>
+    <string name="button">Botón</string>
+    <string name="about">Sobre</string>
+    <string name="new_family_history">Antecedentes Familiares</string>
+    <string name="relation">Relación</string>
+    <string name="choose_condition">Seleccione las Condiciones Que se Aplican</string>
+    <string name="name">Nombre</string>
+    <string name="depression">Depresión</string>
+    <string name="bipolar">Bipolar</string>
+    <string name="anxiety">Ansiedad</string>
+    <string name="alzheimer">Alzheimer</string>
+    <string name="learning_disorders">Trastornos del Aprendizaje</string>
+    <string name="ADHD">TDAH</string>
+    <string name="alcohol_substance_abuse">Alcohol/Abuso de Drogas</string>
+    <string name="cancer">Cáncer</string>
+    <string name="patient_history">Historia del Paciente</string>
+    <string name="history_of_present_illness">Historia Clínica</string>
+    <string name="present_illness_text">Fecha: Síntoma, Duración, OTC, Tratamiento</string>
+    <string name="family_history_text">Nombre, Relación, Síntomas</string>
+    <string name="immunization_text">Fecha: Vacuna, Tipo, Dosis, Edad, Fecha, Número de Lote</string>
+    <string name="procedure_history_text">Fecha: Procedimiento, Médico, Institución / Ubicación, Resultado</string>
+    <string name="diagnostic_findings_text">Fecha: Ensayo, Resultado/Diagnóstico, Interpretación</string>
+    <string name="review_of_body_system_text">Piel, Cabeza, Ojos, Oídos, Nariz, Boca, Cuello, Pecho, Respiratorias, Cardíacas, Gastrointestinales, Ginecológicos, Trastornos Musculoesqueléticos, Vasculares Periféricas, Neurológicas, Hematológicas, Endocrino, Psiquiátricos</string>
+    <string name="social_history_text">Fecha: Estado Civil, Ocupación, Consumo de Café, el Consumo de Tabaco, Consumo de Alcohol, el Consumo de Drogas</string>
+    <string name="allergies_text">Fecha: Tipo, Reacción, Intensidad, Fecha del Ultimo Incidente, Tratamiento</string>
+    <string name="allergies">Alergias</string>
+    <string name="medication_text">Fecha: Medicamento, la Dosis, la Frecuencia, la Fecha de Inicio, Fecha de Finalización</string>
+    <string name="date_value">FECHANUMERO</string>
+    <string name="section_logs">Selección de Registros</string>
+    <string name="other">Otro</string>
+    <string name="this_is_fragment_no2">This is fragment No.2</string>
+    <string name="cardiac">Cardíaco</string>
+    <string name="ears">Orejas</string>
+    <string name="eyes">Ojos</string>
+    <string name="version_1">Versión 1.0</string>
+    <string name="ori_ver_of_app">Versión Original de la Aplicación</string>
+    <string name="possible_feature">Posible Futuro Características:</string>
+    <string name="web_tracker">Web Tracker</string>
+    <string name="family_history_tracker">Historia Familiar de Tracker</string>
+    <string name="vaccine_tracker">Rastreador de Vacuna</string>
+    <string name="consultation_report_pic_tracker">Informe de la Consulta de Seguimiento Imagen</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</resources>

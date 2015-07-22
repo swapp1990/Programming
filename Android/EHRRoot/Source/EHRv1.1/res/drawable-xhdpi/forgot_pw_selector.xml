@@ -1,0 +1,9 @@
+ <selector 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/forgot_pw_btn_click1"
+          android:state_pressed="true" />
+    <item android:drawable="@drawable/forgot_pw_btn1"
+          android:state_focused="true" />
+    <item android:drawable="@drawable/forgot_pw_btn1" />
+</selector>
+

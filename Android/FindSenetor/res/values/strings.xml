@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FindSenetor</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Find Senetor!</string>
+	<string name="edit_message">Enter Zip!</string>
+	<string name="button_send">Send</string>
+	<string name="send_message">Not Send</string>
+	
+	<string-array name="country_arrays">
+        <item>AK</item>
+        <item>AL</item>
+        <item>AR</item>
+        <item>AS</item>
+        <item>AZ</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DC</item>
+        <item>DE</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>GU</item>
+        <item>HI</item>
+        <item>IA</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>MA</item>
+        <item>MD</item>
+        <item>ME</item>
+        <item>MD</item>
+        <item>MH</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MO</item>
+        </string-array>
+</resources>
