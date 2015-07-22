@@ -1,0 +1,155 @@
+#include "GameObject.h"
+
+namespace BlackRock
+{
+	GameObject::GameObject(const char *i_assetPath, int i_assetType)
+	{
+		assetPath_ = i_assetPath;
+		assetType_ = i_assetType;
+		Initialize();
+	}
+
+	GameObject::GameObject(int i_assetType)
+	{
+		assetPath_ = NULL;
+		assetType_ = i_assetType;
+		Initialize();
+	}
+
+	void GameObject::Initialize()
+	{
+		m_sprite_data = new Sprite::sRectangle(0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+
+		//Initialize Sprite
+		if (assetType_ == 0)  
+		{
+			m_currentSprite = new Sprite(assetPath_);
+			g_Graphics::Get().sprite_array->push_back(m_currentSprite);
+			m_currentSprite->SetData(m_sprite_data);
+		}
+		//Initialize Mesh
+		else if (assetType_ == 1)
+		{
+			m_currentMesh = new Mesh(assetPath_,1);
+			g_Graphics::Get().mesh_array->push_back(m_currentMesh);
+		}
+		//Debug Line
+		else if (assetType_ == 2)
+		{
+			m_currentDebugLine = new DebugLine();
+			g_Graphics::Get().debugLine_array->push_back(m_currentDebugLine);
+		}
+		//Debug Shapes
+		else if (assetType_ == 3)
+		{
+			m_currentMesh = new Mesh(assetPath_, 1);
+			g_Graphics::Get().debug_mesh_array->push_back(m_currentMesh);
+		}
+		//Collision Mesh
+		else if (assetType_ == 4)
+		{
+			m_currentMesh = new Mesh(assetPath_, 1);
+			g_Graphics::Get().collision_mesh_array->push_back(m_currentMesh);
+		}
+	}
+
+	void GameObject::SetPosition(float m_posn[3])
+	{
+		if (assetType_ == 0)
+		{
+			m_sprite_data->centerX = m_posn[0];
+			m_sprite_data->centerY = m_posn[1];
+			m_currentSprite->SetData(m_sprite_data);
+		}
+		else if (assetType_ == 1 || assetType_ == 3 || assetType_ == 4)
+		{
+			m_currentMesh->m_position.x = m_posn[0];
+			m_currentMesh->m_position.y = m_posn[1];
+			m_currentMesh->m_position.z = m_posn[2];
+		}
+	}
+
+	void GameObject::SetScale(float m_scale[3])
+	{
+		if (assetType_ == 0)
+		{
+			m_sprite_data->width = m_scale[0];
+			m_sprite_data->height = m_scale[1];
+			m_currentSprite->SetData(m_sprite_data);
+		}
+		else if (assetType_ == 1 || assetType_ == 3 || assetType_ == 4)
+		{
+			m_currentMesh->m_scale.x = m_scale[0];
+			m_currentMesh->m_scale.y = m_scale[1];
+			m_currentMesh->m_scale.z = m_scale[2];
+		}
+	}
+
+	void GameObject::SetRotation(float m_rotate[3])
+	{
+		if (assetType_ == 1)
+		{
+			m_currentMesh->SetRotation(m_rotate);
+		}
+	}
+
+	float* GameObject::GetRotation()
+	{
+		static float m_rotn[3];
+		m_rotn[0] = m_currentMesh->GetRotation().x;
+		m_rotn[1] = m_currentMesh->GetRotation().y;
+		m_rotn[2] = m_currentMesh->GetRotation().z;
+		return m_rotn;
+	}
+
+	float* GameObject::GetPosition()
+	{
+		static float m_posn[3];
+		m_posn[0] = m_currentMesh->GetPosition().x;
+		m_posn[1] = m_currentMesh->GetPosition().y;
+		m_posn[2] = m_currentMesh->GetPosition().z;
+		return m_posn;
+	}
+
+	void GameObject::SetMaterial(const char *materialPath_)
+	{
+		if (assetType_ == 1)
+		{
+			m_currentMaterial = new Material(materialPath_);
+			g_Graphics::Get().InitializeMaterial(m_currentMaterial);
+			m_currentMesh->SetMaterial(m_currentMaterial);
+		}
+	}
+
+	void GameObject::SetUVAnimateSpeed(float uvSpeed[2])
+	{
+		m_currentMaterial->SetUVAnimateSpeed(uvSpeed);
+	}
+
+
+	void GameObject::SetTextureCoor(float m_texc[2])
+	{
+		if (assetType_ == 0)
+		{
+			m_sprite_data->tex_u = m_texc[0];
+			m_sprite_data->tex_v = m_texc[1];
+			m_currentSprite->SetData(m_sprite_data);
+		}
+	}
+
+	void GameObject::AddLine(float m_posn_beg[], float m_posn_end[])
+	{
+		if (assetType_ == 2)
+		{
+			m_currentDebugLine->AddLine(m_posn_beg, m_posn_end);
+		}
+	}
+
+	void GameObject::ChangeLine(float m_posn_beg[], float m_posn_end[])
+	{
+		if (assetType_ == 2)
+		{
+			m_currentDebugLine->ChangeLine(m_posn_beg, m_posn_end);
+		}
+	}
+}

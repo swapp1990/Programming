@@ -1,0 +1,84 @@
+#ifndef WORLD
+#define WORLD
+#pragma once
+#include <vector>
+#include <stdio.h>
+#include <Windows.h>
+#include "../Mesh.h"
+/*#include "Actor.h"
+#include "Renderer.h"
+#include "Timing.h"
+#include "SmartPointer.h"*/
+#include "..\Utils\Singleton.h"
+#include "..\Timing.h"
+#include "..\GameObject.h"
+
+using namespace BlackRock;
+namespace BlackRock
+{
+	
+class World
+{
+	friend BlackRock::Singleton<World>;
+	World();
+	~World();
+	//std::vector<SmartPointer<Actor>> actorArray;
+	//std::vector<Actor *> *actorArrayType;
+	
+	bool bQuit;
+	float tempx;
+	float player_y;
+	bool isCollidedForward_;
+	bool isCollidedDown_;
+	float playerSpeed_;
+public:
+	float deltaTime;
+	float timeElapsed_;
+	bool keyIsPressed;
+	unsigned int keyPressedCode;
+
+	//camerra collision
+	float alpha_camera;
+	bool tempV;
+	float oldValue;
+	float correctedValue;
+	//
+	GameObject *player_;
+	GameObject *mesh_camera;
+	GameObject *playerDebugLine, *playerDebugLine_Down, *cameraDebugLine, *cameraDebugLine2;
+	GameObject *mesh_collision;
+	std::vector<GameObject *> *enemyArray;
+
+	std::vector<D3DXVECTOR3> *collision_tringles;
+	//SharedPtr<Actor> CreateActor(const char * i_Name);
+
+	//void addActor(const SmartPointer<Actor> actor);
+	//void addActorType(Actor* actor);
+	//Actor* getActorFromType(const char *type);
+
+	//Renderer* renderer;
+	//Graphics* graphics;
+	//Timing* timing;
+	D3DXVECTOR3 GetSeperativeForce(D3DXVECTOR3 m_posn, float distance);
+	int IntersectSegmentTriangle(D3DXVECTOR3 p, D3DXVECTOR3 q, D3DXVECTOR3 a, D3DXVECTOR3 b, D3DXVECTOR3 c,
+		float &u, float &v, float &w, float &t);
+	void EnemyChase();
+
+	void Update();
+	bool InitializeWorld(const HWND i_mainWindow);
+	float GetFrameTime();
+
+	void AddToMeshArray(Mesh *currentMesh);
+	void startRendering();
+
+	void changePosnX(float incrementValue);
+	void changePosnY(float incrementValue);
+	void changePosnZ(float incrementValue);
+
+	void movePlayer(float incrementValue);
+	void rotatePlayer(float incrementValue);
+	void downPlayer(float incrementValue);
+};
+}
+typedef BlackRock::Singleton<World> g_World;
+#endif

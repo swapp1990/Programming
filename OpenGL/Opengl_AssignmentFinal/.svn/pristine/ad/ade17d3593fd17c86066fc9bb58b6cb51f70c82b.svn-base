@@ -1,0 +1,651 @@
+#include "World.h"
+
+/*#include <stdio.h>
+#include <conio.h>
+#include <iostream>*/
+
+#include "../Graphics.h"
+namespace BlackRock
+{
+
+static bool bKeyPressed = false;
+static unsigned int keyCode = 0;
+static void OnKeyPressed( unsigned int i_CharID )
+{
+	bKeyPressed = true;
+	keyCode = i_CharID;
+}
+bool ResetPosition_ = false;
+static int ResetPosition()
+{
+	int temp;
+	ResetPosition_ = !ResetPosition_;
+	return 0;
+}
+
+World::World()
+{
+	//actorArrayType = new std::vector<Actor *>;
+	enemyArray = new std::vector<GameObject *>;
+	collision_tringles = new std::vector<D3DXVECTOR3>();
+	//Cheesy::setKeyDownCallback( OnKeyPressed );
+	deltaTime = 0.0f;
+	alpha_camera = correctedValue = 0.0f;
+	playerSpeed_ = 1.0f;
+	bQuit = tempV = false;
+	tempx = player_y = 0.0f;
+	isCollidedForward_ = isCollidedDown_ = false;
+}
+
+void World::AddToMeshArray(Mesh *currentMesh)
+{
+
+}
+
+bool World::InitializeWorld(const HWND i_mainWindow)
+{
+	g_Timing::Get().init();
+
+	if (!g_Graphics::Get().Init(i_mainWindow))
+	{
+		return false;
+	}
+	//GoT Logo
+	/*GameObject *sprite_logo = new GameObject("data/got.dds", 0);
+	float sprite_logo_posn[] = { 0.0f, 0.7f, 0.0f };
+	sprite_logo->SetPosition(sprite_logo_posn);
+	float sprite_logo_scale[] = { 1.2f, 1.0f, 1.0f };
+	sprite_logo->SetScale(sprite_logo_scale);*/
+
+	//Running Cat
+	/*GameObject *sprite_cat = new GameObject("data/runningcat.dds", 0);
+	float sprite_cat_posn[] = { 0.6f, -0.6f, 0.0f };
+	sprite_cat->SetPosition(sprite_cat_posn);
+	float sprite_cat_tex_c[] = { 0.5f, 0.25f};
+	sprite_cat->SetTextureCoor(sprite_cat_tex_c);*/
+
+	//Plane
+	/*GameObject *mesh_plane = new GameObject("data/Plane_Floor.mesh", 1);
+	float mesh_plane_posn[] = { 13.5f, -1.5f, 3.3f };
+	mesh_plane->SetPosition(mesh_plane_posn);
+	float mesh_plane_scale[] = { 9.0f, 1.0f, 14.0f };
+	mesh_plane->SetScale(mesh_plane_scale);
+	float mesh_plane_scale_rotate[] = { -90.0f, 0.0f, 0.0f };
+	mesh_plane->SetRotation(mesh_plane_scale_rotate);*/
+
+	GameObject *mesh_plane = new GameObject("data/Floor_Mesh.mesh", 1);
+	float mesh_plane_posn[] = { 0.0f, 0.0f, 0.0f };
+	mesh_plane->SetPosition(mesh_plane_posn);
+	float mesh_plane_scale[] = { 0.2f, 0.2f, 0.2f };
+	mesh_plane->SetScale(mesh_plane_scale);
+
+	mesh_collision = new GameObject("data/Map_Collision.mesh", 4);
+	mesh_collision->SetPosition(mesh_plane_posn);
+	mesh_collision->SetScale(mesh_plane_scale);
+
+	GameObject *mesh_railing = new GameObject("data/Railings.mesh", 1);
+	mesh_railing->SetPosition(mesh_plane_posn);
+	mesh_railing->SetScale(mesh_plane_scale);
+
+	GameObject *plane_mesh = new GameObject("data/plane.mesh", 1);
+	plane_mesh->SetPosition(mesh_plane_posn);
+
+	GameObject *mesh_metal_bars = new GameObject("data/metal_bars.mesh", 1);
+	mesh_metal_bars->SetPosition(mesh_plane_posn);
+	mesh_metal_bars->SetScale(mesh_plane_scale);
+
+	GameObject *mesh_walls = new GameObject("data/Walls.mesh", 1);
+	mesh_walls->SetPosition(mesh_plane_posn);
+	mesh_walls->SetScale(mesh_plane_scale);
+
+	GameObject *mesh_ceiling = new GameObject("data/Ceilings.mesh", 1);
+	mesh_ceiling->SetPosition(mesh_plane_posn);
+	mesh_ceiling->SetScale(mesh_plane_scale);
+
+	GameObject *mesh_cementWalls = new GameObject("data/Cement_Wall.mesh", 1);
+	mesh_cementWalls->SetPosition(mesh_plane_posn);
+	mesh_cementWalls->SetScale(mesh_plane_scale);
+
+	GameObject *mesh_randomObjects = new GameObject("data/RandomObjects.mesh", 1);
+	mesh_randomObjects->SetPosition(mesh_plane_posn);
+	mesh_randomObjects->SetScale(mesh_plane_scale);
+
+
+	GameObject *mesh_plane2 = new GameObject("data/Plane_Floor.mesh", 1);
+	float mesh_plane2_posn[] = { -13.0f, -1.5f, 3.3f };
+	mesh_plane2->SetPosition(mesh_plane2_posn);
+	float mesh_plane2_scale[] = { 0.1f, 0.1f, 0.1f };
+	mesh_plane2->SetScale(mesh_plane2_scale);
+	float mesh_plane2_scale_rotate[] = { -90.0f, 0.0f, 0.0f };
+	mesh_plane2->SetRotation(mesh_plane2_scale_rotate);
+
+	//temp1 = 
+	//3D Mario
+	player_ = new GameObject("data/Models/Mario.mesh", 1);
+	float mesh_mario_posn[] = { 0.0f, -25.0f, 22.0f };
+	player_->SetPosition(mesh_mario_posn);
+	//
+	float mesh_mario_scale[] = { 1.0f, 1.0f, 1.0f };
+	//player_->SetScale(mesh_plane_scale);
+	float mesh_mario_rotate[] = { 0.0f, 180.0f, 0.0f };
+	player_->SetRotation(mesh_mario_rotate);
+	float *tempSpeed = new float;
+	tempSpeed = &playerSpeed_;
+	g_Graphics::Get().debug_menu->CreateSlider("Speed: ", 20.0f, 30.0f, tempSpeed);
+	g_Graphics::Get().debug_menu->CreateButton("Reset Posn:", &ResetPosition);
+	g_Graphics::Get().debug_menu->CreateText("Press LShift to turn menu on/off", "");
+	//GameObject *player_debug = new GameObject(2);
+	//player_debug->SetPosition(mesh_mario_posn);
+	//DebugLines
+	playerDebugLine = new GameObject(2);
+	float endPosn[3] = { player_->GetPosition()[0] + 2.0f, player_->GetPosition()[1], player_->GetPosition()[2] };
+	playerDebugLine->AddLine(player_->GetPosition(), endPosn);
+
+	playerDebugLine_Down = new GameObject(2);
+	float endPosn_Down[3] = { player_->GetPosition()[0], player_->GetPosition()[1] - 7.0f, player_->GetPosition()[2] };
+	playerDebugLine_Down->AddLine(player_->GetPosition(), endPosn_Down);
+
+	cameraDebugLine = new GameObject(2);
+	float startPosn[3] = { player_->GetPosition()[0], player_->GetPosition()[1] + 10.0f, player_->GetPosition()[2] - 20.0f };
+	cameraDebugLine2 = new GameObject(2);
+	//camera debug line with player
+	cameraDebugLine->AddLine(startPosn, player_->GetPosition());
+	cameraDebugLine2->AddLine(startPosn, player_->GetPosition());
+
+	mesh_camera = new GameObject("data/Models/Mario.mesh", 1);
+	float camera_x = player_->GetPosition()[0];
+	float camera_y = player_->GetPosition()[1];
+	float camera_z = player_->GetPosition()[2];
+	mesh_camera->SetPosition(D3DXVECTOR3(camera_x, camera_y, camera_z));
+	mesh_camera->m_currentMesh->isLookAt_ = true;
+	if (!g_Graphics::Get().Initialize(i_mainWindow))
+	{
+		
+	}
+	mesh_plane->SetMaterial("data/material_floor.txt");
+	
+	mesh_metal_bars->SetMaterial("data/material_metal.txt");
+	//mesh_collision->SetMaterial("data/material_metal.txt");
+	mesh_walls->SetMaterial("data/material_walls.txt");
+	mesh_ceiling->SetMaterial("data/material_cement.txt");
+	mesh_cementWalls->SetMaterial("data/material_cement.txt");
+	mesh_randomObjects->SetMaterial("data/material_metal.txt");
+	mesh_railing->SetMaterial("data/material_railing.txt");
+	player_->SetMaterial("data/Models/Mario_Material.txt");
+	mesh_camera->SetMaterial("data/Models/Mario_Material.txt");
+	//mesh_plane2->SetMaterial("data/Star_Material.txt");
+	
+	float uvSpeed[2] = { -0.2f, 0.0f };
+
+
+	for (int i = 0; i < mesh_collision->m_currentMesh->numberOfIndices; i++)
+	{
+		uint32_t indexNumber = mesh_collision->m_currentMesh->indexData[i];
+		/*char buf[2048];
+		sprintf(buf, "Index: %d\n", indexNumber);
+	    OutputDebugString(buf);*/
+		collision_tringles->push_back(D3DXVECTOR3(mesh_collision->m_currentMesh->vertexData[indexNumber].x,
+			mesh_collision->m_currentMesh->vertexData[indexNumber].y,
+			mesh_collision->m_currentMesh->vertexData[indexNumber].z));
+	}
+
+	for (unsigned int i = 0; i < collision_tringles->size(); i++)
+	{
+		D3DXVECTOR3 currentMeshVertex = (D3DXVECTOR3)collision_tringles->at(i);
+		char buf[2048];
+		sprintf(buf, "Vertex: %f, %f, %f\n", currentMeshVertex.x, currentMeshVertex.y, currentMeshVertex.z);
+		//OutputDebugString(buf);
+	}
+
+	
+	//mesh_plane2->SetUVAnimateSpeed(uvSpeed);
+	//mesh_plane->SetUVAnimateSpeed(uvSpeed);
+	
+	//initialize Mesh
+	return true;
+}
+
+int World::IntersectSegmentTriangle(D3DXVECTOR3 p, D3DXVECTOR3 q, D3DXVECTOR3 a, D3DXVECTOR3 b, D3DXVECTOR3 c,
+	float &u, float &v, float &w, float &t)
+{
+	D3DXVECTOR3 ab = b - a;
+	D3DXVECTOR3 ac = c - a;
+	D3DXVECTOR3 qp = p - q;
+
+	// Compute triangle normal. Can be precalculated or cached if
+	// intersecting multiple segments against the same triangle
+	D3DXVECTOR3 n;
+
+	D3DXVec3Cross(&n, &ab, &ac);
+	//D3DXVECTOR3 n = Cross(ab, ac);
+
+	// Compute denominator d. If d <= 0, segment is parallel to or points
+	// away from triangle, so exit early
+	float d = D3DXVec3Dot(&qp, &n);
+	if (d <= 0.0f) return 0;
+
+	// Compute intersection t value of pq with plane of triangle. A ray
+	// intersects if 0 <= t. Segment intersects if 0 <= t <= 1. Delay
+	// dividing by d until intersection has been found to pierce triangle
+	D3DXVECTOR3 ap = p - a;
+	t = D3DXVec3Dot(&ap, &n);
+	if (t < 0.0f) return 0;
+	if (t > d) return 0; // For segment; exclude this code line for a ray test
+
+	// Compute barycentric coordinate components and test if within bounds
+	D3DXVECTOR3 e;
+
+	D3DXVec3Cross(&e, &qp, &ap);
+	//D3DXVECTOR3 e = Cross(qp, ap);
+	v = D3DXVec3Dot(&ac, &e);
+	if (v < 0.0f || v > d) return 0;
+	w = -D3DXVec3Dot(&ab, &e);
+	if (w < 0.0f || v + w > d) return 0;
+
+	// Segment/ray intersects triangle. Perform delayed division and
+	// compute the last barycentric coordinate component
+	float ood = 1.0f / d;
+	t *= ood;
+	v *= ood;
+	w *= ood;
+	u = 1.0f - v - w;
+	return 1;
+}
+
+void World::changePosnX(float incrementValue)
+{
+	float rotn_y = player_->GetRotation()[1];
+	rotn_y += incrementValue * 50.0f;
+	D3DXVECTOR3 m_rotation(-90.0f, rotn_y, 0.0f);
+	//char buf[2048];
+	//sprintf(buf, "rotn_y_camera: %f\n", rotn_y);
+	//OutputDebugString(buf);
+	player_y += 0.001f;
+	D3DXVECTOR3 m_position = player_->GetPosition();
+	m_position.x += player_y;
+	player_->SetPosition(m_position);
+	//player_->SetRotation(m_rotation);
+}
+
+void World::changePosnZ(float incrementValue)
+{
+	//posn_y += incrementValue;
+	/*rotn_y += incrementValue;
+	D3DXVECTOR3 m_position(posn_x, posn_y, posn_z);
+	D3DXVECTOR3 m_rotn(rotn_y, 0.0f, 0.0f);
+	//mesh_Cube->SetPosition(m_position);
+	mesh_Plane->SetRotation(m_rotn);
+	char buf[2048];
+	sprintf(buf, "rotn_y_camera: %f\n", m_rotn.x);
+	OutputDebugString(buf);*/
+}
+
+void World::movePlayer(float incrementValue)
+{
+	if ((!isCollidedForward_ && incrementValue > 0) || incrementValue < 0)
+	{
+		float rotn_y = player_->GetRotation()[1];
+		float alpha = 180.0f - rotn_y;
+		alpha = alpha * 3.14f / 180.0f;
+		float posn_x = player_->GetPosition()[0];
+		float posn_y = player_->GetPosition()[1];
+		float posn_z = player_->GetPosition()[2];
+		posn_x = posn_x + incrementValue * playerSpeed_ * -1 * sin(alpha);
+		posn_z = posn_z + incrementValue * playerSpeed_ * cos(alpha);
+		D3DXVECTOR3 m_position(posn_x, posn_y, posn_z);
+		player_->SetPosition(m_position);
+		/*float cam_x = g_Graphics::Get().GetCurrentCamera()->posn_x_camera;
+		cam_x += incrementValue * -1 * sin(alpha);
+		float cam_y = g_Graphics::Get().GetCurrentCamera()->posn_y_camera;
+		cam_y += incrementValue * cos(alpha);
+		float cam_z = g_Graphics::Get().GetCurrentCamera()->posn_z_camera;
+		D3DXVECTOR3 m_position_cam(cam_x, cam_y, cam_z);
+		g_Graphics::Get().GetCurrentCamera()->SetPosition(m_position_cam);*/
+	}
+}
+
+void World::downPlayer(float incrementValue)
+{
+	if ((!isCollidedDown_ && incrementValue > 0) || incrementValue < 0)
+	{
+		float posn_x = player_->GetPosition()[0];
+		float posn_y = player_->GetPosition()[1];
+		float posn_z = player_->GetPosition()[2];
+		posn_y = posn_y - incrementValue;
+		D3DXVECTOR3 m_position(posn_x, posn_y, posn_z);
+		player_->SetPosition(m_position);
+	}
+}
+
+void World::rotatePlayer(float incrementValue)
+{
+	float rotn_y = player_->GetRotation()[1];
+	rotn_y += incrementValue;
+	D3DXVECTOR3 m_rotation(player_->GetRotation()[0], rotn_y, player_->GetRotation()[2]);
+	player_->SetRotation(m_rotation);
+}
+
+void World::changePosnY(float incrementValue)
+{
+	float rotn_y = player_->GetRotation()[1];
+	float alpha = 180.0f - rotn_y;
+	float alpha2 = 180.0f - rotn_y;
+	alpha = alpha * 3.14f / 180.0f;
+	float posn_x = player_->GetPosition()[0];
+	float posn_y = player_->GetPosition()[1];
+	float posn_z = player_->GetPosition()[2];
+	posn_x = posn_x + incrementValue * -1 * sin(alpha);
+	posn_y = posn_y + incrementValue * cos(alpha);
+	D3DXVECTOR3 m_position(posn_x, posn_y, posn_z);
+	player_->SetPosition(m_position);
+	float posnEnd[] = { m_position.x + 2.0f, m_position.y, m_position.z };
+	//playerDebugLine->ChangeLine(m_position, posnEnd);
+	//char buf[2048];
+	//sprintf(buf, "rotn_y_camera: %f, posnx: %f, posny: %f\n", alpha2, cos(alpha), sin(alpha));
+	//OutputDebugString(buf);
+}
+
+/*void World::addActor(const SmartPointer<Actor> actor)
+{
+	actorArray.push_back(actor);
+}
+
+void World::addActorType(Actor* actor)
+{
+	actorArrayType->push_back(actor);
+}
+
+Actor* World::getActorFromType(const char *type)
+{
+	for (std::vector<Actor *>::iterator i = actorArrayType->begin();  i != actorArrayType->end(); ++i)
+	{
+				Actor *actorType = (Actor *) *i;
+				if(strcmp(actorType->getType(),type) == 0)
+				{
+					return actorType;
+				}
+	}
+}*/
+
+void World::Update()
+{
+	/*deltaTime = g_Timing::Get().GetFrameTime();
+	if (deltaTime > 1)
+		deltaTime = 0.0f;
+	timeElapsed_ += deltaTime;*/
+
+	/*player_y += 0.001f;
+	D3DXVECTOR3 m_position = player_->GetPosition();
+	m_position.x += player_y;*/
+	//g_Graphics::Get().GetCurrentCamera()->SetPosition(player_->GetPosition());
+	//player_->SetPosition(m_position);
+	//char buf[2048];
+	//sprintf(buf, "numebr vertices collision: %d\n", mesh_collision->m_currentMesh->numberOfVertices);
+	//OutputDebugString(buf);
+
+	D3DXVECTOR3 playerVertex = D3DXVECTOR3(player_->GetPosition()[0], player_->GetPosition()[1] + 5.0f, player_->GetPosition()[2]);
+	mesh_camera->m_currentMesh->SetLookAt(playerVertex);
+	if (!g_Graphics::Get().GetCurrentCamera()->flyCam_)
+	{
+		float camera_x = player_->GetPosition()[0];
+		float camera_y = player_->GetPosition()[1] + 13.0f;
+		float camera_z = player_->GetPosition()[2] - 20.0f;
+		float rotn_y = player_->GetRotation()[1];
+		float alpha = 180.0f - rotn_y;
+		alpha = alpha * 3.14f / 180.0f;
+		//camera_x = camera_x + 10.0f * -sin(alpha);
+		//camera_z = camera_z + 10.0f * cos(alpha);
+		D3DXVECTOR3 playerVertex_ForCamera = D3DXVECTOR3(camera_x, camera_y, camera_z);
+		//g_Graphics::Get().GetCurrentCamera()->SetPosition(playerVertex_ForCamera);
+		D3DXVECTOR3 playerVertexRotn_ForCamera = D3DXVECTOR3(player_->GetRotation()[0] + 20.0f, player_->GetRotation()[1] - 180.0f, player_->GetRotation()[2]);
+		//g_Graphics::Get().GetCurrentCamera()->SetRotation(playerVertexRotn_ForCamera);
+	}
+
+	if (ResetPosition_)
+	{
+		ResetPosition_ = !ResetPosition_;
+		D3DXVECTOR3 playerVertex = D3DXVECTOR3(0.0f, -25.0f, 22.0f);
+		player_->SetPosition(playerVertex);
+	}
+
+	float rotn_y = player_->GetRotation()[1];
+	float alpha = 180.0f - rotn_y;
+	alpha = alpha * 3.14f / 180.0f;
+	float posn_x = 10.0f * -1 * sin(alpha);
+	float posn_z = 10.0f * cos(alpha);
+	D3DXVECTOR3 playerVertexForward = D3DXVECTOR3(playerVertex.x  + posn_x, playerVertex.y, playerVertex.z + posn_z);
+	playerDebugLine->ChangeLine(playerVertex, playerVertexForward);
+	D3DXVECTOR3 playerVertexDown = D3DXVECTOR3(playerVertex.x, playerVertex.y - 10.0f, playerVertex.z);
+	playerDebugLine_Down->ChangeLine(playerVertex, playerVertexDown);
+	//camera collisions
+	bool isCollidedCBL_ = false;
+	bool isCollidedCBR_ = false;
+	float alpha2 = 180.0f - rotn_y;
+	alpha2 = alpha2 -40.0f;
+	alpha2 = alpha2 * 3.14f / 180.0f;
+	float posn_x_camera_d = 20.0f * -1 * sin(alpha2);
+	float posn_z_camera_d = 20.0f * cos(alpha2);
+	D3DXVECTOR3 playerVertexCamera_Debug = D3DXVECTOR3(playerVertex.x - posn_x_camera_d, playerVertex.y + 5.0f, playerVertex.z - posn_z_camera_d);
+	cameraDebugLine->ChangeLine(playerVertex, playerVertexCamera_Debug);
+
+	alpha2 = 180.0f - rotn_y;
+	alpha2 = alpha2 + 40.0f;
+	alpha2 = alpha2 * 3.14f / 180.0f;
+	posn_x_camera_d = 20.0f * -1 * sin(alpha2);
+	posn_z_camera_d = 20.0f * cos(alpha2);
+	D3DXVECTOR3 playerVertexCamera_Debug_2 = D3DXVECTOR3(playerVertex.x - posn_x_camera_d, playerVertex.y + 5.0f, playerVertex.z - posn_z_camera_d);
+	cameraDebugLine2->ChangeLine(playerVertex, playerVertexCamera_Debug_2);
+	//camera collisions
+	int vertexCount = 0;
+	int count = 0;
+	bool isCollidedFT_ = false;
+	bool isColliderDT_ = false;
+
+	do
+	{
+		D3DXVECTOR3 a = (D3DXVECTOR3)collision_tringles->at(vertexCount);
+		a = a * 0.2f;
+		D3DXVECTOR3 b = (D3DXVECTOR3)collision_tringles->at(vertexCount + 1);
+		b = b * 0.2f;
+		D3DXVECTOR3 c = (D3DXVECTOR3)collision_tringles->at(vertexCount + 2);
+		c = c * 0.2f;
+		float u = 0.0f;
+		float v = 0.0f;
+		float w = 0.0f;
+		float t = 0.0f;
+		float tf = 0.0f;
+		float tfc = 0.0f;
+		float tfc_2 = 0.0f;
+		int intersectionForward = IntersectSegmentTriangle(playerVertex, playerVertexForward, a, b, c, u, v, w, tf);
+		int intersectionDown = IntersectSegmentTriangle(playerVertex, playerVertexDown, a, b, c, u, v, w, t);
+		int intersectionCameraLeft = IntersectSegmentTriangle(playerVertex, playerVertexCamera_Debug, a, b, c, u, v, w, tfc);
+		int intersectionCameraRight = IntersectSegmentTriangle(playerVertex, playerVertexCamera_Debug_2, a, b, c, u, v, w, tfc_2);
+		if (intersectionForward == 1)
+		{
+			isCollidedFT_ = true;
+			char buf[2048];
+			sprintf(buf, "collision forward: %f\n", tf);
+			//OutputDebugString(buf);
+			rotatePlayer(tf);
+		}
+		if (intersectionDown == 1)
+		{
+			isColliderDT_ = true;
+			
+			float upMotion = 1.0f - t;
+			if (upMotion < 0.8f)
+			{
+				downPlayer(-upMotion);
+			}
+		}
+		if (intersectionCameraLeft == 1)
+		{
+			isCollidedCBL_ = true;
+			char buf[2048];
+			
+			if (alpha_camera < 35)
+				alpha_camera += 1.2f;
+			sprintf(buf, "collision camera back left: %f\n", alpha_camera);
+			//OutputDebugString(buf);
+		}
+		if (intersectionCameraRight == 1)
+		{
+			isCollidedCBR_ = true;
+			if (alpha_camera > -35)
+				alpha_camera -= 1.2f;
+		}
+		count++;
+		vertexCount = vertexCount + 3;
+	} while (vertexCount < collision_tringles->size());
+
+	if (isCollidedFT_)
+	{
+		//char buf2[2048];
+		//sprintf(buf2, "Vertex interstion %d\n", count);
+		//OutputDebugString(buf2);
+		isCollidedForward_ = true;
+	}
+
+	else
+		isCollidedForward_ = false;
+
+	if (isColliderDT_)
+	{
+		isCollidedDown_ = true;
+	}
+	else
+	{
+		isCollidedDown_ = false;
+	}
+
+	if (!isCollidedDown_)
+	{
+		downPlayer(0.2f);
+	}
+	count = 0;
+	//Camera rotation based on collision with walls
+		//
+	float alphaC = 180.0f - rotn_y;
+
+	if (isCollidedCBL_ || isCollidedCBR_)
+	{
+		alphaC += alpha_camera;
+		if (!tempV)
+		{
+			oldValue = alphaC;
+		}
+		float temp_correct_value = correctedValue;
+		if (alpha_camera >= 30.0f || alpha_camera <= -30.0f)
+		{
+			tempV = true;
+			correctedValue = alphaC - oldValue;
+			temp_correct_value = temp_correct_value - correctedValue;
+			//temp_correct_value = correctedValue;
+			char buf2[2048];
+
+			alphaC = oldValue;
+			alpha_camera += temp_correct_value;
+			sprintf(buf2, "correctedValu %f\n", alpha_camera);
+			//OutputDebugString(buf2);
+		}
+	}
+
+	else
+	{
+		tempV = false;
+		oldValue = alphaC;
+		//correctedValue = 0.0f;
+		if (alpha_camera > 0)
+			alpha_camera -= 0.5f;
+		else if (alpha_camera < 0)
+			alpha_camera += 0.5f;
+		if (alpha_camera > -1.0f && alpha_camera < 1.0f)
+		{
+			alpha_camera = 0.0f;
+		}
+		alphaC += alpha_camera;
+		char buf[2048];
+		sprintf(buf, "alphaCamera: %f\n", alpha_camera);
+		//OutputDebugString(buf);
+	}
+
+	alphaC = alphaC * 3.14f / 180.0f;
+	float posn_x_camera = 20.0f * -1 * sin(alphaC);
+	float posn_z_camera = 20.0f * cos(alphaC);
+	D3DXVECTOR3 playerVertexCamera = D3DXVECTOR3(playerVertex.x - posn_x_camera, playerVertex.y + 9.0f, playerVertex.z - posn_z_camera);
+	g_Graphics::Get().GetCurrentCamera()->SetPosition(playerVertexCamera);
+		//
+	g_Graphics::Get().CameraLookAt(D3DXVECTOR3(player_->GetPosition()[0], player_->GetPosition()[1] + 5.0f, player_->GetPosition()[2]));
+	//g_Graphics::Get().GetCurrentCamera()->SetPosition(D3DXVECTOR3(player_->GetPosition()[0], player_->GetPosition()[1] - 10.0f, player_->GetPosition()[2]));
+	g_Graphics::Get().Render();
+	/*
+	for (std::vector<SmartPointer<Actor>>::iterator i = actorArray.begin();  i != actorArray.end(); ++i)
+	{
+		SmartPointer<Actor> actorObj = *i;
+		actorObj->update(deltaTime);
+		if(actorObj->markedForDeath_)
+		{
+			DEBUG_PRINT("Actor marked for death\n");
+		}
+	}*/
+}
+
+
+
+float World::GetFrameTime()
+{
+	float deltaTime = static_cast<float>(g_Timing::Get().GetFrameTime());
+	if (deltaTime > 1)
+		deltaTime = 0.0f;
+	return deltaTime;
+}
+
+void World::startRendering()
+{
+	//Cheesy::Service( bQuit );
+	//renderer->RenderAll(actorArray);
+	//Update();
+}
+
+void World::EnemyChase()
+{
+	for (unsigned int i = 0; i < enemyArray->size(); i++)
+	{
+		GameObject *curr_mesh = (GameObject *)enemyArray->at(i);
+		D3DXVECTOR3 playerVector = player_->GetPosition();
+		D3DXVECTOR3 enemyVector = curr_mesh->GetPosition();
+		D3DXVECTOR3 diffVector = playerVector - enemyVector;
+		D3DXVec3Normalize(&diffVector, &diffVector);
+		float distance = D3DXVec3Length(&(enemyVector - playerVector));
+		D3DXVECTOR3 position2 = enemyVector + diffVector * 0.16f + GetSeperativeForce(curr_mesh->GetPosition(), distance) * 0.08f;
+		curr_mesh->SetPosition(D3DXVECTOR3(position2.x, position2.y, playerVector.z));
+	}
+}
+
+D3DXVECTOR3 World::GetSeperativeForce(D3DXVECTOR3 m_posn, float distance)
+{
+	D3DXVECTOR3 seperativeForce = { 0.0f, 0.0f, 0.0f };
+	if (distance < 2.0f)
+	{
+		for (unsigned int i = 0; i < enemyArray->size(); i++)
+		{
+			GameObject *curr_mesh = (GameObject *)enemyArray->at(i);
+			//if (curr_mesh->GetPosition() != m_posn)
+			{
+				D3DXVECTOR3 currentPosn = curr_mesh->GetPosition();
+				seperativeForce += m_posn - currentPosn;
+			}
+		}
+		seperativeForce.z = m_posn.z;
+
+	}
+	return seperativeForce;
+}
+
+World::~World()
+{
+	//delete actorArrayType;
+}
+
+}
+

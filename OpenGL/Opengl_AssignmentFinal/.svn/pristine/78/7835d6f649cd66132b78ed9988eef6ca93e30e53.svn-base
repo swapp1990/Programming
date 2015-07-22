@@ -1,0 +1,16 @@
+﻿Build started 2/13/2015 8:07:44 PM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\MeshBuilder\MeshBuilder.vcxproj" on node 5 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\MeshBuilder\\" /Fd"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\MeshBuilder\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt cMeshBuilder.cpp EntryPoint.cpp
+         EntryPoint.cpp
+         cMeshBuilder.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\MeshBuilder.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\lib\ BuilderHelper.lib LuaLib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\MeshBuilder.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\MeshBuilder.lib" /MACHINE:X86 C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\MeshBuilder\cMeshBuilder.obj
+         C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\MeshBuilder\EntryPoint.obj
+         MeshBuilder.vcxproj -> C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\MeshBuilder.exe
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\MeshBuilder\MeshBuilder.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.45

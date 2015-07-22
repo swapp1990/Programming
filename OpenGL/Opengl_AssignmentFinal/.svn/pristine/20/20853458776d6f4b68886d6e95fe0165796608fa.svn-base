@@ -1,0 +1,36 @@
+﻿Build started 3/29/2015 1:33:21 AM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\Code\Engine\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D EAE6320_GRAPHICS_AREPIXEVENTSENABLED /D LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\\" /Fd"C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt World\World.cpp
+         World.cpp
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(21): warning C4101: 'temp' : unreferenced local variable
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(196): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(467): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(488): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(499): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(548): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+     1>c:\users\swapp\desktop\assignment_4.03\engineering\code\engine\engine\world\world.cpp(568): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\lib\Engine.lib" /LIBPATH:C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\lib\ /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\\" /NOLOGO C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Camera.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\DebugLine.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\DebugMenu.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Font.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\GameObject.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Graphics.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Light.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Material.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Mesh.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Sprite.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\Timing.obj
+         C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\intermediates\Engine\World.obj
+         Engine.vcxproj -> C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\lib\Engine.lib
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\Code\Engine\Engine\Engine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.81

@@ -1,0 +1,95 @@
+#pragma once
+#ifndef EAE6320_GRAPHICS_H
+#define EAE6320_GRAPHICS_H
+
+#include <Windows.h>
+#include "Light.h"
+#include "Utils\Singleton.h"
+#include "Mesh.h"
+#include "Camera.h"
+#include "Sprite.h"
+#include "Font.h"
+#include "DebugLine.h"
+#include "DebugMenu.h"
+#include <vector>
+
+namespace BlackRock
+{
+	class Graphics //Singleton Class
+	{
+		friend BlackRock::Singleton<Graphics>;
+	private:
+		Graphics();
+		Light *m_light_1;
+		Camera *mainCamera_;
+
+		Material *default_material;
+
+		float posn_x, posn_y, posn_z;
+		float rotn_y;
+		float posn_x_camera, posn_y_camera;
+		float posn_x_light, posn_y_light, posn_z_light;
+		float tempx;
+		float incrementValue;
+		ID3DXConstantTable * s_pConstantTable_vertex;
+
+		Sprite *Sprite_timer;
+		Sprite *Sprite_cat;
+		DebugLine *temp1;
+		DebugLine *debug_1;
+
+
+		D3DXVECTOR3 m_position_line;
+		Font *g_font;
+		Font::sTextStruct *defaultText;
+		float *slider_value;
+	public:
+		bool isDebugModeOn_;
+		bool *flyCamFlag;
+		DebugMenu *debug_menu;
+		std::vector<Sprite *> *sprite_array;
+		std::vector<Material *> *material_array;
+		std::vector<Mesh *> *mesh_array;
+		std::vector<Mesh *> *debug_mesh_array;
+		std::vector<Mesh *> *collision_mesh_array;
+		
+		std::vector<DebugLine *> *debugLine_array;
+
+		bool Initialize(const HWND i_mainWindow);
+		bool Init(const HWND i_mainWindow);
+		void InitializeObject();
+		void InitializeMaterial(Material *newMaterial);
+
+		void SetMeshArray(std::vector<Mesh *> *meshArray);
+		void Render();
+		bool ShutDown();
+
+		void ChangeLights();
+
+		void changePosnX_Camera(float incrementValue);
+		void changePosnY_Camera(float incrementValue);
+		void changePosnZ_Camera(float incrementValue);
+
+		void changePosnX_Light(float incrementValue);
+		void changePosnZ_Light(float incrementValue);
+
+		void DebugMenu_Clicked();
+		void DebugMenu_Move();
+		void DebugMenu_Disable();
+
+		void changeAtlasIndex(int index);
+		void changeSpriteSheet(int indexX, int indexY);
+
+		bool CreateDevice(const HWND i_mainWindow);
+		bool CreateInterface(const HWND i_mainWindow);
+		bool CreateVertexBuffer(const DWORD i_usage);
+		bool CreateIndexBuffer(const DWORD i_usage);
+		bool CreateVertexAndIndexBuffers();
+		Camera* Graphics::GetCurrentCamera();
+		void CameraLookAt(float lookAtPsn[3]);
+	};
+}
+
+typedef BlackRock::Singleton<BlackRock::Graphics> g_Graphics;
+#endif // EAE6320_GRAPHICS_H
+

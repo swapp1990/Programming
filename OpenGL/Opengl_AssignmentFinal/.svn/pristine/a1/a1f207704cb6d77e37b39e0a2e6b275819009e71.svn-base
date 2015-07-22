@@ -1,0 +1,14 @@
+﻿Build started 2/13/2015 8:07:41 PM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\MayaExporter\MayaExporter.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I\include\ /Zi /nologo /W3 /WX- /Od /D NT_PLUGIN /D REQUIRE_IOSTREAM /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MAYAEXPORTER_EXPORTS /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\x64\Debug\intermediates\MayaExporter\\" /Fd"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\x64\Debug\intermediates\MayaExporter\vc120.pdb" /Gd /TP /errorReport:prompt cMayaExporter.cpp EntryPoint.cpp
+         EntryPoint.cpp
+     1>EntryPoint.cpp(8): fatal error C1083: Cannot open include file: 'maya/MFnPlugin.h': No such file or directory
+         cMayaExporter.cpp
+     1>c:\users\swapp\desktop\assignment_4.01\engineering\code\tools\mayaexporter\cMayaExporter.h(11): fatal error C1083: Cannot open include file: 'maya/MPxFileTranslator.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\MayaExporter\MayaExporter.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.85

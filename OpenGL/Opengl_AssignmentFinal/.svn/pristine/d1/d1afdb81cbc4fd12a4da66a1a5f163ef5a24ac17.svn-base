@@ -1,0 +1,8 @@
+﻿Build started 9/29/2014 11:48:58 PM.
+     1>Project "C:\Users\Swapp\Desktop\Engineering_02\sawant_swapnil\Engineering\Code\Engine\Engine\Engine.vcxproj" on node 4 (Rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\12.0\bin\Microsoft.Common.CurrentVersion.targets(615,5): error : The OutputPath property is not set for project 'Engine.vcxproj'.  Please check to make sure that you have specified a valid combination of Configuration and Platform for this project.  Configuration='Debug'  Platform='Win32'.  This error may also appear if some other project is trying to follow a project-to-project reference to this project, this project has been unloaded or is not included in the solution, and the referencing project does not build using the same or an equivalent Configuration or Platform.
+     1>Done Building Project "C:\Users\Swapp\Desktop\Engineering_02\sawant_swapnil\Engineering\Code\Engine\Engine\Engine.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.00

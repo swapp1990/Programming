@@ -1,0 +1,16 @@
+﻿Build started 2/13/2015 8:07:44 PM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\TextureBuilder\TextureBuilder.vcxproj" on node 6 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\\" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\TextureBuilder\\" /Fd"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\TextureBuilder\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt cTextureBuilder.cpp EntryPoint.cpp
+         EntryPoint.cpp
+         cTextureBuilder.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\TextureBuilder.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\lib\ /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\\" BuilderHelper.lib d3d9.lib d3dx9.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\TextureBuilder.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\TextureBuilder.lib" /MACHINE:X86 C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\TextureBuilder\cTextureBuilder.obj
+         C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\TextureBuilder\EntryPoint.obj
+         TextureBuilder.vcxproj -> C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\bin\TextureBuilder.exe
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\TextureBuilder\TextureBuilder.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.42

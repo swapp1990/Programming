@@ -1,0 +1,16 @@
+--[[ CHange Light Settings in this file ]]--
+return
+{
+	directionLight =
+	{
+		direction = {0.0, 0.0,0.0},
+		color = {1.0, 1.0, 1.0},
+	},
+	
+	ambientLight =
+	{
+		color = {0.4, 0.4, 0.4},
+	},
+
+}
+

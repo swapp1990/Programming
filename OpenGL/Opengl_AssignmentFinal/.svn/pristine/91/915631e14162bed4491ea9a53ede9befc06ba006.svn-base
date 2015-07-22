@@ -1,0 +1,252 @@
+#include "DebugMenu.h"
+#include "Font.h"
+#include "GameObject.h"
+
+#ifdef _DEBUG
+DebugMenu::DebugMenu()
+{
+	startPosnX_ = 0.0f;
+}
+
+DebugMenu::DebugMenu(IDirect3DDevice9* s_direct3dDevice)
+{
+	DebugMenu();
+	isDebugEnabled_ = true;
+	current_selection = counter = widgetCount = 0;
+	sliderCount = 1;
+	checkbox_text = "< ~ >";
+	button_text = "[ ]";
+	startPosnX_ = startPosnY_ = 20.0f;
+	min = 1.0f;
+	max = 3.0f;
+	g_font = new Font();
+	g_font->Initialize(s_direct3dDevice, 20.0f);
+	g_font->AddText("Debug Menu", 10.0f, 20.0f);
+	debugWidgets_interactive = new std::vector<sDebugWidgetStruct *>();
+
+	i_direct3dDevice = s_direct3dDevice;
+	D3DXCreateBox(
+		s_direct3dDevice,
+		60.0f, // width
+		60.0f, // height
+		60.0f, // depth
+		&meshBox,
+		0);
+}
+
+void DebugMenu::MakeSelected(sDebugWidgetStruct *debug_widget)
+{
+	debug_widget->selected_ = true;
+	Font::sTextStruct *mdebug_text = debug_widget->debug_text;
+	mdebug_text->g = 0.0f;
+	mdebug_text->b = 0.0f;
+}
+
+void DebugMenu::MakeUnSelected(sDebugWidgetStruct *debug_widget)
+{
+	debug_widget->selected_ = false;
+	Font::sTextStruct *mdebug_text = debug_widget->debug_text;
+	mdebug_text->g = 1.0f;
+	mdebug_text->b = 1.0f;
+}
+
+void DebugMenu::CreateSlider(const char *name, float min, float max, float *i_slider_value)
+{
+	// ...
+	slider_value = i_slider_value;
+	//*slider_value = min;
+	widgetCount++;
+	startPosnY_ += 25.0f;
+	g_font->AddText(name, 10.0f, startPosnY_, 10.0f, 20.0f);
+	const char *slider_text = "<*--------->";
+	Font::sTextStruct *debug_text = g_font->AddText(slider_text, 10.0f + 105.0f, startPosnY_, 10.0f, 20.0f);
+	sDebugWidgetStruct *debug_widget_slider = new sDebugWidgetStruct(debug_text, 1, false);
+	debugWidgets_interactive->push_back(debug_widget_slider);
+	if (widgetCount == 1)
+	{
+		MakeSelected(debug_widget_slider);
+	}
+}
+
+void DebugMenu::CreateText(char *name, char *value)
+{
+	startPosnY_ += 25.0f;
+	g_font->AddText(name, 10.0f, startPosnY_, 10.0f, 20.0f);
+	Font::sTextStruct *debug_text = g_font->AddText(value, 10.0f + 105.0f, startPosnY_, 10.0f, 20.0f);
+}
+
+void DebugMenu::CreateCheckBox(char *name, bool *value)
+{
+	widgetCount++;
+	checkBox_value = value;
+	startPosnY_ += 25.0f;
+	g_font->AddText(name, 10.0f, startPosnY_, 10.0f, 20.0f);
+	
+	Font::sTextStruct *debug_text = g_font->AddText(checkbox_text, 10.0f + 105.0f, startPosnY_, 10.0f, 20.0f);
+	sDebugWidgetStruct *debug_widget_checkBox = new sDebugWidgetStruct(debug_text, 0, false);
+	debugWidgets_interactive->push_back(debug_widget_checkBox);
+	if (widgetCount == 1)
+	{
+		MakeSelected(debug_widget_checkBox);
+	}
+}
+
+void DebugMenu::CreateButton(char *name, int(*myfunc)())
+{
+	widgetCount++;
+	//int result = (*myfunc)();
+	pfi = myfunc;
+	startPosnY_ += 25.0f;
+	g_font->AddText(name, 10.0f, startPosnY_, 10.0f, 20.0f);
+	Font::sTextStruct *debug_text = g_font->AddText(button_text, 10.0f + 105.0f, startPosnY_, 10.0f, 20.0f);
+	sDebugWidgetStruct *debug_widget_checkBox = new sDebugWidgetStruct(debug_text, 2, false);
+	debugWidgets_interactive->push_back(debug_widget_checkBox);
+	if (widgetCount == 1)
+	{
+		MakeSelected(debug_widget_checkBox);
+	}
+}
+
+void DebugMenu::CreateDebugCube()
+{
+	BlackRock::GameObject *mesh_cube = new BlackRock::GameObject("data/cube.mesh", 3);
+	float mesh_plane_posn[] = { 2.0f, -5.0f, 15.0f };
+	mesh_cube->SetPosition(mesh_plane_posn);
+}
+
+void DebugMenu::CreateDebugSphere()
+{
+	BlackRock::GameObject *mesh_sphere = new BlackRock::GameObject("data/sphere.mesh", 3);
+	float mesh_plane_posn[] = { 0.0f, -5.0f, 15.0f };
+	mesh_sphere->SetPosition(mesh_plane_posn);
+}
+
+void DebugMenu::SpaceKeyPressed()
+{
+	for (unsigned int i = 0; i < debugWidgets_interactive->size(); i++)
+	{
+		sDebugWidgetStruct *currWidgetStruct = (sDebugWidgetStruct *)debugWidgets_interactive->at(i);
+		if (currWidgetStruct->selected_)
+		{
+			//if checkBox
+			if (currWidgetStruct->widgetType_ == 0)
+			{
+				*checkBox_value = !*checkBox_value;
+				Font::sTextStruct *mdebug_text = currWidgetStruct->debug_text;
+				if (mdebug_text->m_string == checkbox_text)
+				{
+					mdebug_text->m_string = "<  >";
+				}
+				else
+				{
+					mdebug_text->m_string = checkbox_text;
+				}
+			}
+			else if (currWidgetStruct->widgetType_ == 1)
+			{
+
+				float rangeValue = (min + max + 1) / 10;
+				*slider_value = *slider_value + rangeValue;
+				char buf[2048];
+				sprintf_s(buf, "test_value: %f\n", rangeValue);
+				//OutputDebugString(buf);
+				Font::sTextStruct *mdebug_text = currWidgetStruct->debug_text;
+				currWidgetStruct->counter_++;
+				if (currWidgetStruct->counter_ > 10)
+				{
+					currWidgetStruct->counter_ = 1;
+					*slider_value = min;
+				}
+				if (currWidgetStruct->counter_ == 1)
+				{
+					mdebug_text->m_string = "<*--------->";
+				}
+				else if (currWidgetStruct->counter_ == 2)
+				{
+					mdebug_text->m_string = "<-*-------->";
+				}
+				else if (currWidgetStruct->counter_ == 3)
+				{
+					mdebug_text->m_string = "<--*------->";
+				}
+				else if (currWidgetStruct->counter_ == 4)
+				{
+					mdebug_text->m_string = "<---*------>";
+				}
+				else if (currWidgetStruct->counter_ == 5)
+				{
+					mdebug_text->m_string = "<----*----->";
+				}
+				else if (currWidgetStruct->counter_ == 6)
+				{
+					mdebug_text->m_string = "<-----*---->";
+				}
+				else if (currWidgetStruct->counter_ == 7)
+				{
+					mdebug_text->m_string = "<------*--->";
+				}
+				else if (currWidgetStruct->counter_ == 8)
+				{
+					mdebug_text->m_string = "<-------*-->";
+				}
+				else if (currWidgetStruct->counter_ == 9)
+				{
+					mdebug_text->m_string = "<--------*->";
+				}
+				else if (currWidgetStruct->counter_ == 10)
+				{
+					mdebug_text->m_string = "<---------*>";
+				}
+			}
+			else
+			{
+				int result = (*pfi)();
+			}
+		}
+	}
+}
+
+void DebugMenu::ArrowkeyPressed()
+{
+	current_selection++;
+	if (current_selection >= widgetCount)
+	{
+		current_selection = 0;
+	}
+	for (unsigned int i = 0; i < debugWidgets_interactive->size(); i++)
+	{
+		sDebugWidgetStruct *currWidgetStruct = (sDebugWidgetStruct *)debugWidgets_interactive->at(i);
+		MakeUnSelected(currWidgetStruct);
+		if (i == current_selection)
+		{
+			MakeSelected(currWidgetStruct);
+		}
+	}
+}
+
+void DebugMenu::Render()
+{
+	if (isDebugEnabled_)
+			g_font->Render();
+
+	D3DXMATRIX matrix;
+	D3DXMatrixTranslation(&matrix, 65.0f, -65.0f, 65.0f);
+	//i_direct3dDevice->SetTransform(D3DTS_WORLD, &matrix);
+	i_direct3dDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	// draw the object using the previously created world matrix.
+	//meshBox->DrawSubset(0);
+//	meshBox->DrawSubset(0);
+
+}
+
+void DebugMenu::DisableDebugMenu()
+{
+	isDebugEnabled_ = !isDebugEnabled_;
+}
+
+DebugMenu::~DebugMenu()
+{
+}
+
+#endif
+

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="gl_utils.cpp" />
+    <ClCompile Include="maths_funcs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vmath.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="arcball.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="..\..\..\Downloads\sb6code-master\sb6code-master\include\sb6mfile.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="gl_utils.h" />
+    <ClInclude Include="maths_funcs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{97dec77e-4467-4aa1-b94c-2f6023d8f72b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\basic_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\basic_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\cube_f.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\cube_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\cube_v.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\cube_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pf_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pf_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pfBlend_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pv_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pv_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\reflect_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\reflect_fs_old.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\reflect_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\reflect_vs_old.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\simple_texture_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\simple_texture_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\skybox_cube_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\skybox_cube_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\test_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\test_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pfBlend_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\plain.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\plain.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_dir_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_dir_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pf_shadow_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\phong_pf_shadow_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\projective_shadow_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\projective_shadow_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\texture_w_normal_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\texture_w_normal_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\toon_shader_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\toon_shader_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\tangent_normal_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\tangent_normal_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\explosion_fs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\explosion_vs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shader\explosion_gs.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

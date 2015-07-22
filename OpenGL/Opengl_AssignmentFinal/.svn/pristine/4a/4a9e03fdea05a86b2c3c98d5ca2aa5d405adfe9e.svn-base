@@ -1,0 +1,16 @@
+﻿Build started 2/13/2015 8:07:41 PM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\BuilderHelper\BuilderHelper.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\BuilderHelper\\" /Fd"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\BuilderHelper\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt cbBuilder.cpp UtilityFunctions.cpp
+         UtilityFunctions.cpp
+         cbBuilder.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\lib\BuilderHelper.lib" /LIBPATH:C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\lib\ /NOLOGO C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\BuilderHelper\cbBuilder.obj
+         C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\intermediates\BuilderHelper\UtilityFunctions.obj
+         BuilderHelper.vcxproj -> C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\temp\Win32\Debug\lib\BuilderHelper.lib
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.01\Engineering\Code\Tools\BuilderHelper\BuilderHelper.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.03

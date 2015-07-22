@@ -1,0 +1,33 @@
+﻿Build started 5/4/2015 12:57:14 AM.
+     1>Project "C:\Users\Swapp\Desktop\Opengl_Assignment3\OpenGL_Assignment\OpenGL_Assignment.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Swapp\Desktop\Opengl_Assignment3\extern\assimp\ /IC:\Users\Swapp\Desktop\Opengl_Assignment3\extern\stbi\stb_image\ /IC:\Users\Swapp\Desktop\Opengl_Assignment3\extern\ /IC:\Users\Swapp\Desktop\Opengl_Assignment3\extern\glew\include\GL\ /IC:\Users\Swapp\Desktop\Opengl_Assignment3\extern\glfw\include\GLFW\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY' : macro redefinition
+                 c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\extern\glfw\include\glfw\glfw3.h(96) : see previous definition of 'APIENTRY'
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(21): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(102): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(526): warning C4101: 'vbo_cube_vertices' : unreferenced local variable
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(526): warning C4101: 'vbo_cube_colors' : unreferenced local variable
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1185): warning C4305: 'argument' : truncation from 'double' to 'GLclampf'
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1425): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1529): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1625): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1663): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1676): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\swapp\desktop\opengl_assignment3\opengl_assignment\main.cpp(1211): warning C4101: 'cube_map_texture' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Swapp\Desktop\Opengl_Assignment3\Debug\OpenGL_Assignment.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Swapp\Desktop\Opengl_Assignment3\OpenGL_Assignment\extern\ /LIBPATH:C:\Users\Swapp\Desktop\Opengl_Assignment3\OpenGL_Assignment\extern\glew /LIBPATH:C:\Users\Swapp\Desktop\Opengl_Assignment3\OpenGL_Assignment\extern\glfw assimp.lib glfw3.lib glew32d.lib glfw3dll.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Swapp\Desktop\Opengl_Assignment3\Debug\OpenGL_Assignment.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Swapp\Desktop\Opengl_Assignment3\Debug\OpenGL_Assignment.lib" /MACHINE:X86 Debug\Bitmap.obj
+         Debug\gl_utils.obj
+         Debug\main.obj
+         Debug\maths_funcs.obj
+         Debug\Mesh.obj
+         Debug\object.obj
+         Debug\Shader.obj
+         Debug\Texture.obj
+         OpenGL_Assignment.vcxproj -> C:\Users\Swapp\Desktop\Opengl_Assignment3\Debug\OpenGL_Assignment.exe
+     1>Done Building Project "C:\Users\Swapp\Desktop\Opengl_Assignment3\OpenGL_Assignment\OpenGL_Assignment.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.03

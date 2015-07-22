@@ -1,0 +1,20 @@
+--[[ This is an Example Material File ]]--
+
+return
+{
+	constants = 
+	{
+		g_colorModifier = {0.1,0.1,0.1 },
+	},
+
+	shaders =
+	{
+		vertex = "data/vertexShader.bsl",
+		pixel = "data/fragmentShader.bsl",
+	},
+
+	textures = 
+	{
+		path = "data/railing_D.dds",
+	},
+}

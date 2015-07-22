@@ -1,0 +1,12 @@
+﻿Build started 3/19/2015 8:32:50 PM.
+     1>Project "C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\Code\Engine\UserSettings\UserSettings.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Copying User Settings file
+                 1 file(s) copied.
+       Lib:
+         UserSettings.vcxproj -> C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\temp\Win32\Debug\lib\UserSettings.lib
+     1>Done Building Project "C:\Users\Swapp\Desktop\Assignment_4.03\Engineering\Code\Engine\UserSettings\UserSettings.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.14

@@ -1,0 +1,23 @@
+#version 410 core
+
+in vec3 normal;
+in vec2 st;
+in vec3 V;
+in vec4 vertex_color;
+
+uniform sampler2D basic_texture;
+
+out vec4 frag_colour;
+
+void main()
+{
+	vec3 norm = normalize(normal);
+	vec3 V = normalize(V);
+
+	vec4 texel = texture (basic_texture, st);
+	frag_colour = texel;
+}
+
+
+
+

@@ -1,0 +1,37 @@
+#version 410 core
+
+layout (location = 0) in vec3 vertex_position;
+layout (location = 1) in vec3 vertex_normal;
+layout (location = 2) in vec2 texture_coord;
+layout (location = 3) in vec3 vertex_color;
+
+uniform mat4 model, view, proj;
+
+// Position of light
+uniform vec3 light_pos = vec3(0.0, 0.0, -10.0);
+
+out vec3 normal;
+out vec2 st;
+
+out vec3 L;
+out vec3 V;
+
+void main(void) {
+  /*
+   vs_out.N = mat3(mv_matrix) * v_normal;
+  gl_Position = proj_matrix * P;
+  vs_out.f_color = v_color;
+  vs_out.f_texcoord = tex_coord;*/
+
+  mat4 mv_matrix = model * view;
+  vec4 P = mv_matrix * vec4(vertex_position, 1.0);
+  // Calculate normal in view-space
+  normal = mat3(mv_matrix) * vertex_normal;
+  // Calculate light vector
+  L = light_pos - P.xyz;
+  // Calculate view vector
+  V = -P.xyz;
+
+  st = texture_coord;
+  gl_Position = proj * view * model * vec4 (vertex_position, 1.0);
+}
