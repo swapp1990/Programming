@@ -1,0 +1,87 @@
+#pragma once
+#ifndef EAE6320_MESH_H
+#define EAE6320_MESH_H
+
+#include <d3d9.h>
+#include <d3dx9shader.h>
+#include "../../External/Lua/5.2.3/src/lua.hpp"
+#include <fstream>
+#include "Material.h"
+namespace BlackRock
+{
+	class Mesh
+	{
+		struct sVertex
+		{
+			float x, y, z;
+			D3DCOLOR color;	// D3DCOLOR = 4 bytes, or 8 bits [0,255] per RGBA channel
+			float u, v;
+			float nx, ny, nz;
+			float tx, ty, tz;
+			float btx, bty, btz;
+		};
+		bool isCube_;
+		const char * assetPath_;
+
+		int numberOfVertices;
+		int numberOfIndices;
+
+		Material *m_material;
+		//static std::ifstream* _readMesh;
+		std::ifstream ifs;
+		static D3DVERTEXELEMENT9 s_vertexElements[];
+		ID3DXConstantTable * s_pConstantTable_vertex;
+		IDirect3DVertexDeclaration9* s_vertexDeclaration;
+		IDirect3DVertexBuffer9* s_vertexBuffer;
+		// The index buffer describes how to make triangles with the vertices
+		// (i.e. it defines the vertex connectivity)
+		IDirect3DIndexBuffer9* s_indexBuffer;
+
+		IDirect3DDevice9* s_direct3dDevice;
+		HWND s_mainWindow;
+
+		D3DXHANDLE handle_transform_modelToWorld;
+
+	public:
+		bool isEnemy_ = false;
+
+		Mesh(const char * assetPath_, bool i_isCube);
+
+		D3DXVECTOR3 m_position;
+		D3DXQUATERNION m_rotation;
+		D3DXVECTOR3 orig_rotn;
+		D3DXVECTOR3 m_scale;
+		D3DXVECTOR3 m_lookAtVector;
+		bool isLookAt_;
+		void SetPosition(D3DXVECTOR3 i_posn);
+		void SetRotation(D3DXVECTOR3 i_rotn);
+		void SetRotation(float i_rotn[]);
+		void SetScale(D3DXVECTOR3 i_scale);
+		void SetTransform();
+		D3DXVECTOR3 GetPosition();
+		D3DXVECTOR3 GetRotation();
+
+		void SetLookAt(D3DXVECTOR3 i_posn);
+		Material* GetMaterial();
+
+		bool Initialize(IDirect3DDevice9* i_direct3dDevice, const HWND i_mainWindow);
+		void SetConstantTable(ID3DXConstantTable * i_pConstantTable_vertex);
+		void SetMaterial(Material *i_material);
+		bool CreateVertexAndIndexBuffers();
+		bool CreateVertexBuffer(const DWORD i_usage);
+		bool CreateIndexBuffer(const DWORD i_usage);
+
+		bool LoadAsset(const char* i_path);
+		bool LoadTableValues(lua_State& io_luaState);
+		bool LoadTableValues_nested(lua_State& io_luaState, const char * field_value);
+		bool LoadTableValues_parameters_values(lua_State& io_luaState, const char * field_value);
+
+		void Render();
+
+		void UpdatePosition();
+
+		~Mesh();
+	};
+}
+
+#endif

@@ -1,0 +1,713 @@
+#include "Mesh.h"
+#include <cstdint>
+#include <cassert>
+#include <fstream>
+
+#include <iostream>
+namespace BlackRock
+{
+	D3DVERTEXELEMENT9 Mesh::s_vertexElements[] =
+	{
+		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
+		// COLOR0, D3DCOLOR == 4 bytes
+		{ 0, 12, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0 },
+		{ 0, 16, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },
+		{ 0, 24, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_NORMAL, 0 },
+		{ 0, 32, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TANGENT, 0 },
+		{ 0, 40, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_BINORMAL, 0 },
+		D3DDECL_END()
+	};
+
+	//std::ifstream* Mesh::_readMesh = NULL;
+
+	Mesh::Mesh(const char * i_assetPath, bool i_isCube)
+	{
+		m_position = { 0.0f, 0.0f, 0.0f };
+		m_scale = { 1.0f, 1.0f, 1.0f };
+		m_lookAtVector = { 0.0f, 0.0f, 0.0f };
+		orig_rotn = { 0.0f, 0.0f, 0.0f };
+		D3DXQuaternionIdentity(&m_rotation);
+		isCube_ = i_isCube;
+		assetPath_ = i_assetPath;
+		isLookAt_ = false;
+		//_readMesh = new std::ifstream(assetPath_, std::ios::binary);
+		//LoadAsset("data/plane.txt");
+	}
+
+	bool Mesh::Initialize(IDirect3DDevice9* i_direct3dDevice, const HWND i_mainWindow)
+	{
+		s_direct3dDevice = i_direct3dDevice;
+		s_mainWindow = i_mainWindow;
+		if (!CreateVertexAndIndexBuffers())
+		{
+			goto OnError;
+		}
+
+		return true;
+
+	OnError:
+		//ShutDown();
+		return false;
+	}
+
+	void Mesh::SetLookAt(D3DXVECTOR3 i_posn)
+	{
+		m_lookAtVector = i_posn;
+	}
+
+	bool Mesh::CreateVertexAndIndexBuffers()
+	{
+		// The usage tells Direct3D how this vertex and index buffers will be used. 
+		DWORD usage = 0;
+		{
+			// Our code will only ever write to the buffer
+			usage |= D3DUSAGE_WRITEONLY;
+			// The type of vertex processing should match what was specified when the device interface was created with CreateDevice()
+			{
+
+			}
+		}
+
+		if (!CreateVertexBuffer(usage))
+		{
+			return false;
+		}
+		if (!CreateIndexBuffer(usage))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	bool Mesh::CreateVertexBuffer(const DWORD i_usage)
+	{
+		// Initialize the vertex format
+		
+		ifs.open(assetPath_, std::ios::binary);
+		HRESULT result = s_direct3dDevice->CreateVertexDeclaration(s_vertexElements, &s_vertexDeclaration);
+		if (SUCCEEDED(result))
+		{
+			result = s_direct3dDevice->SetVertexDeclaration(s_vertexDeclaration);
+			if (FAILED(result))
+			{
+				MessageBox(s_mainWindow, "DirectX failed to set the vertex declaration", "No Vertex Declaration", MB_OK | MB_ICONERROR);
+				return false;
+			}
+		}
+		else
+		{
+			MessageBox(s_mainWindow, "DirectX failed to create a Direct3D9 vertex declaration", "No Vertex Declaration", MB_OK | MB_ICONERROR);
+			return false;
+		}
+		unsigned int vertexCount = 0;
+		// Create a vertex buffer
+		{
+			// A triangle has three vertices
+			
+			/*if (isCube_)
+			{
+				vertexCount = 8;
+			}*/
+			
+			ifs.read(reinterpret_cast<char*>(&vertexCount), sizeof(int));
+			numberOfVertices = vertexCount;
+			/*float vertices_f[6] = {};
+			ifs.read(reinterpret_cast<char*>(&vertices_f), 6 * sizeof(float));
+			for (int i = 0; i < 6; i++)
+			{
+				float currentb = (float)vertices_f[i];
+			}*/
+
+			const unsigned int bufferSize = vertexCount * sizeof(sVertex);
+			// We will define our own vertex format
+			const DWORD useSeparateVertexDeclaration = 0;
+			// Place the vertex buffer into memory that Direct3D thinks is the most appropriate
+			const D3DPOOL useDefaultPool = D3DPOOL_DEFAULT;
+			HANDLE* const notUsed = NULL;
+
+			// The usage tells Direct3D how this vertex buffer will be used
+			result = s_direct3dDevice->CreateVertexBuffer(bufferSize, i_usage, useSeparateVertexDeclaration, useDefaultPool,
+				&s_vertexBuffer, notUsed);
+			if (FAILED(result))
+			{
+				MessageBox(s_mainWindow, "DirectX failed to create a vertex buffer", "No Vertex Buffer", MB_OK | MB_ICONERROR);
+				return false;
+			}
+		}
+		// Fill the vertex buffer with the triangle's vertices
+		{
+			// Before the vertex buffer can be changed it must be "locked"
+			sVertex* vertexData;
+			{
+				const unsigned int lockEntireBuffer = 0;
+				const DWORD useDefaultLockingBehavior = 0;
+				result = s_vertexBuffer->Lock(lockEntireBuffer, lockEntireBuffer,
+					reinterpret_cast<void**>(&vertexData), useDefaultLockingBehavior);
+				if (FAILED(result))
+				{
+					MessageBox(s_mainWindow, "DirectX failed to lock the vertex buffer", "No Vertex Buffer", MB_OK | MB_ICONERROR);
+					return false;
+				}
+			}
+			// Fill the buffer
+			{
+				//first vertex
+				/**/
+
+				//For Plane				
+
+				if (!isCube_)
+				{
+					const unsigned int numberOfparameters = 17;
+					void* verticesBuffer = new float[4 * numberOfparameters];
+					ifs.read(reinterpret_cast<char*>(verticesBuffer), numberOfparameters * 4 * sizeof(float));
+
+					unsigned int verticesIndex = 0;
+
+					unsigned int vertexDataIndex = 0;
+					for (unsigned int i = 0; i < 4; i++)
+					{
+						float currentvertex[11] = {};
+						for (unsigned int value = 0; value < numberOfparameters; value++)
+						{
+							currentvertex[value] = *(reinterpret_cast<float*>(verticesBuffer)+i*numberOfparameters + value);
+						}
+						vertexData[i] = { currentvertex[0], currentvertex[1], currentvertex[2] };
+						vertexData[i].color = D3DCOLOR_XRGB((int)currentvertex[3], (int)currentvertex[4], (int)currentvertex[5]);
+						vertexData[i].u = currentvertex[6];
+						vertexData[i].v = currentvertex[7];
+						vertexData[i].nx = currentvertex[8];
+						vertexData[i].ny = currentvertex[9];
+						vertexData[i].nz = currentvertex[10];
+						vertexDataIndex++;
+					}
+				}
+				else
+				{
+					const unsigned int numberOfparameters = 17;
+					const unsigned int numberOfVertices = vertexCount;
+					void* verticesBuffer = new float[numberOfVertices * numberOfparameters];
+					ifs.read(reinterpret_cast<char*>(verticesBuffer), numberOfparameters * numberOfVertices * sizeof(float));
+
+					unsigned int verticesIndex = 0;
+
+					unsigned int vertexDataIndex = 0;
+					for (unsigned int i = 0; i < numberOfVertices; i++)
+					{
+						float currentvertex[numberOfparameters] = {};
+						for (unsigned int value = 0; value < numberOfparameters; value++)
+						{
+							currentvertex[value] = *(reinterpret_cast<float*>(verticesBuffer)+i*numberOfparameters + value);
+						}
+						vertexData[i] = { currentvertex[0], currentvertex[1], currentvertex[2] };
+						//std::cout << "Vertex is: " << currentvertex[0] << currentvertex[1] << currentvertex[2] << "\n";
+						vertexData[i].color = D3DCOLOR_XRGB((int)currentvertex[3], (int)currentvertex[4], (int)currentvertex[5]);
+						vertexData[i].u = currentvertex[6];
+						vertexData[i].v = currentvertex[7];
+						vertexData[i].nx = currentvertex[8];
+						vertexData[i].ny = currentvertex[9];
+						vertexData[i].nz = currentvertex[10];
+						vertexData[i].tx = currentvertex[11];
+						vertexData[i].ty = currentvertex[12];
+						vertexData[i].tz = currentvertex[13];
+						vertexData[i].btx = currentvertex[14];
+						vertexData[i].bty = currentvertex[15];
+						vertexData[i].btz = currentvertex[16];
+						vertexDataIndex++;
+					}
+				}
+			}
+			// The buffer must be "unlocked" before it can be used
+			{
+				result = s_vertexBuffer->Unlock();
+				if (FAILED(result))
+				{
+					MessageBox(s_mainWindow, "DirectX failed to unlock the vertex buffer", "No Vertex Buffer", MB_OK | MB_ICONERROR);
+					return false;
+				}
+			}
+		}
+
+		return true;
+
+	}
+
+	bool Mesh::CreateIndexBuffer(const DWORD i_usage)
+	{
+		//int numberOfTriangles = 380;
+		// Create an index buffer
+		{
+			// We'll use 32-bit indices in this class to keep things simple
+			D3DFORMAT format = D3DFMT_INDEX32;
+			
+			ifs.read(reinterpret_cast<char*>(&numberOfIndices), sizeof(uint32_t));
+			unsigned int bufferLength;
+			{
+				// EAE6320_TODO: How many triangles in a rectangle?
+				const unsigned int verticesPerTriangle = 3;
+				const unsigned int trianglesPerRectangle = numberOfIndices;
+				bufferLength = trianglesPerRectangle * sizeof(uint32_t);
+			}
+			D3DPOOL useDefaultPool = D3DPOOL_DEFAULT;
+			HANDLE* notUsed = NULL;
+
+			HRESULT result = s_direct3dDevice->CreateIndexBuffer(bufferLength, i_usage, format, useDefaultPool,
+				&s_indexBuffer, notUsed);
+			if (FAILED(result))
+			{
+				MessageBox(s_mainWindow, "DirectX failed to create an index buffer", "No Index Buffer", MB_OK | MB_ICONERROR);
+				return false;
+			}
+		}
+		// Fill the index buffer with the rectangle's triangles' indices
+		{
+		// Before the index buffer can be changed it must be "locked"
+		uint32_t* indices;
+		{
+			const unsigned int lockEntireBuffer = 0;
+			const DWORD useDefaultLockingBehavior = 0;
+			const HRESULT result = s_indexBuffer->Lock(lockEntireBuffer, lockEntireBuffer,
+				reinterpret_cast<void**>(&indices), useDefaultLockingBehavior);
+			if (FAILED(result))
+			{
+				MessageBox(s_mainWindow, "DirectX failed to lock the index buffer", "No Index Buffer", MB_OK | MB_ICONERROR);
+				return false;
+			}
+		}
+		// Fill the buffer
+		{
+			//front
+			// The first triangle can be filled in like this:
+
+			//void* indicesBuffer = new int[numberOfTriangles * noOfindicesATriangle];
+			ifs.read(reinterpret_cast<char*>(indices), numberOfIndices * sizeof(uint32_t));
+
+			uint32_t * temp = indices;
+
+			for (int i = 0; i < numberOfIndices; i++)
+			{
+				uint32_t value = temp[i];
+				int p = 50;
+			}
+
+
+			
+			/*int indicesCount = 0;
+			for (int i = 0; i < numberOfTriangles; i++)
+			{
+				int currentIndices[noOfindicesATriangle] = {};
+				for (unsigned int value = 0; value < noOfindicesATriangle; value++)
+				{
+					currentIndices[value] = *(reinterpret_cast<int*>(indicesBuffer)+i*noOfindicesATriangle + value);
+					indices[indicesCount] = currentIndices[value];
+					indicesCount++;
+				}
+			}*/
+			// And so on for all of the required triangles
+		}
+		// The buffer must be "unlocked" before it can be used
+		{
+			const HRESULT result = s_indexBuffer->Unlock();
+			if (FAILED(result))
+			{
+				MessageBox(s_mainWindow, "DirectX failed to unlock the index buffer", "No Index Buffer", MB_OK | MB_ICONERROR);
+				return false;
+			}
+		}
+	}
+
+		return true;
+	}
+
+	void Mesh::SetMaterial(Material *i_material)
+	{
+		m_material = i_material;
+		SetConstantTable(m_material->GetConstantTableVertex());
+	}
+
+	void Mesh::SetConstantTable(ID3DXConstantTable * i_pConstantTable_vertex)
+	{
+		s_pConstantTable_vertex = i_pConstantTable_vertex;
+	}
+
+	void Mesh::Render() {
+
+		//m_material->Load(s_direct3dDevice);
+#ifdef EAE6320_GRAPHICS_AREPIXEVENTSENABLED
+		D3DPERF_BeginEvent(0, L"Draw Mesh");
+#endif
+		HRESULT result2 = m_material->Set(s_direct3dDevice);
+		assert(SUCCEEDED(result2));
+		m_material->SetSampler();
+
+		HRESULT result = s_direct3dDevice->SetVertexDeclaration(s_vertexDeclaration);
+		// There can be multiple streams of data feeding the display adaptor at the same time
+		const unsigned int streamIndex = 0;
+		// It's possible to start streaming data in the middle of a vertex buffer
+		const unsigned int bufferOffset = 0;
+		// The "stride" defines how large a single vertex is in the stream of data
+		const unsigned int bufferStride = sizeof(sVertex);
+
+		HRESULT result4 = s_direct3dDevice->SetStreamSource(streamIndex, s_vertexBuffer, bufferOffset, bufferStride);
+		assert(SUCCEEDED(result4));
+
+		// Set the indices to use
+		{
+			HRESULT result = s_direct3dDevice->SetIndices(s_indexBuffer);
+			assert(SUCCEEDED(result));
+		}
+
+		// Render objects from the current streams
+		{
+			// We are using triangles as the "primitive" type,
+			// and we have defined the vertex buffer as a triangle list
+			// (meaning that every triangle is defined by three vertices)
+			const D3DPRIMITIVETYPE primitiveType = D3DPT_TRIANGLELIST;
+			// It's possible to start rendering primitives in the middle of the stream
+			const unsigned int indexOfFirstVertexToRender = 0;
+			const unsigned int indexOfFirstIndexToUse = 0;
+
+			// We are currently only rendering a single triangle
+			//const unsigned int primitiveCountToRender = 1; for one triangle
+
+			// EAE6320_TODO: How many vertices are in a rectangle,
+			// and how many "primitives" (triangles) is it made up of?
+			
+			unsigned int vertexCountToRender = 4;
+			unsigned int primitiveCountToRender = 2;
+
+			vertexCountToRender = numberOfVertices;
+			primitiveCountToRender = numberOfVertices;
+
+			SetTransform();
+			//SetRotationY(rotn_x);
+			HRESULT result = s_direct3dDevice->DrawIndexedPrimitive(primitiveType, indexOfFirstVertexToRender, indexOfFirstVertexToRender,
+				vertexCountToRender, indexOfFirstIndexToUse, primitiveCountToRender);
+			assert(SUCCEEDED(result));
+#ifdef EAE6320_GRAPHICS_AREPIXEVENTSENABLED
+			D3DPERF_EndEvent();
+#endif
+
+		}
+
+		if (isEnemy_)
+		{
+			UpdatePosition();
+		}
+	}
+
+	void Mesh::SetPosition(D3DXVECTOR3 i_posn)
+	{
+		m_position = i_posn;
+	}
+
+	void Mesh::SetRotation(D3DXVECTOR3 i_rotn)
+	{
+		//i_rotn is in deegrees.
+		float x_radiant = i_rotn.x *3.14f / 180.0f;
+		float y_radiant = i_rotn.y *3.14f / 180.0f;
+		float z_radiant = i_rotn.z *3.14f / 180.0f;
+
+		orig_rotn = i_rotn;
+		D3DXQUATERNION qX;
+		D3DXQuaternionIdentity(&qX);
+		D3DXVECTOR3 axisX(1, 0, 0);
+		D3DXQuaternionRotationAxis(&qX, &axisX, x_radiant);
+
+		D3DXQUATERNION qY;
+		D3DXQuaternionIdentity(&qY);
+		D3DXVECTOR3 axisY(0, 1, 0);
+		D3DXQuaternionRotationAxis(&qY, &axisY, y_radiant);
+
+		D3DXQUATERNION qZ;
+		D3DXQuaternionIdentity(&qZ);
+		D3DXVECTOR3 axisZ(0, 0, 1);
+		D3DXQuaternionRotationAxis(&qZ, &axisZ, z_radiant);
+
+		m_rotation = qY*qX*qZ;
+	}
+
+	void Mesh::SetRotation(float i_rotn[])
+	{
+		//i_rotn is in deegrees.
+		float x_radiant = i_rotn[0] *3.14f / 180.0f;
+		float y_radiant = i_rotn[1] * 3.14f / 180.0f;
+		float z_radiant = i_rotn[2] * 3.14f / 180.0f;
+
+		orig_rotn = i_rotn;
+		D3DXQUATERNION qX;
+		D3DXQuaternionIdentity(&qX);
+		D3DXVECTOR3 axisX(1, 0, 0);
+		D3DXQuaternionRotationAxis(&qX, &axisX, x_radiant);
+
+		D3DXQUATERNION qY;
+		D3DXQuaternionIdentity(&qY);
+		D3DXVECTOR3 axisY(0, 1, 0);
+		D3DXQuaternionRotationAxis(&qY, &axisY, y_radiant);
+
+		D3DXQUATERNION qZ;
+		D3DXQuaternionIdentity(&qZ);
+		D3DXVECTOR3 axisZ(0, 0, 1);
+		D3DXQuaternionRotationAxis(&qZ, &axisZ, z_radiant);
+
+		m_rotation = qY*qX*qZ;
+	}
+
+	void Mesh::SetTransform()
+	{
+		D3DXMATRIX transform;
+		if (isLookAt_)
+		{
+			D3DXMatrixTransformation(&transform, NULL, NULL, &m_scale, NULL,
+				&m_rotation, &m_position);
+		}
+		else
+
+		{
+			D3DXMatrixTransformation(&transform, NULL, NULL, &m_scale, NULL,
+				&m_rotation, &m_position);
+
+		}
+		handle_transform_modelToWorld = s_pConstantTable_vertex->GetConstantByName(NULL, "g_transform_modelToWorld");
+		s_pConstantTable_vertex->SetMatrix(s_direct3dDevice, handle_transform_modelToWorld, &transform);
+	}
+
+	void Mesh::SetScale(D3DXVECTOR3 i_scale)
+	{
+		m_scale = i_scale;
+
+	}
+
+	void Mesh::UpdatePosition()
+	{
+
+	}
+
+	Material* Mesh::GetMaterial()
+	{
+		return m_material;
+	}
+
+	
+
+	D3DXVECTOR3 Mesh::GetPosition()
+	{
+		return m_position;
+	}
+
+	D3DXVECTOR3 Mesh::GetRotation()
+	{
+		return orig_rotn;
+	}
+
+	//////////// Load from Lua Mesh File /////////////////////
+
+	bool Mesh::LoadAsset(const char* i_path)
+	{
+		bool wereThereErrors = false;
+
+		// Create a new Lua state
+		lua_State* luaState = NULL;
+		{
+			luaState = luaL_newstate();
+			if (!luaState)
+			{
+				wereThereErrors = true;
+				std::cerr << "Failed to create a new Lua state\n";
+				goto OnExit;
+			}
+		}
+
+		// Load the asset file as a "chunk",
+		// meaning there will be a callable function at the top of the stack
+		{
+			const int luaResult = luaL_loadfile(luaState, i_path);
+			if (luaResult != LUA_OK)
+			{
+				wereThereErrors = true;
+				std::cerr << lua_tostring(luaState, -1);
+				// Pop the error message
+				lua_pop(luaState, 1);
+				goto OnExit;
+			}
+		}
+		// Execute the "chunk", which should load the asset
+		// into a table at the top of the stack
+		{
+			const int argumentCount = 0;
+			const int returnValueCount = LUA_MULTRET;	// Return _everything_ that the file returns
+			const int noMessageHandler = 0;
+			const int luaResult = lua_pcall(luaState, argumentCount, returnValueCount, noMessageHandler);
+			if (luaResult == LUA_OK)
+			{
+				// A well-behaved asset file will only return a single value
+				const int returnedValueCount = lua_gettop(luaState);
+				if (returnedValueCount == 1)
+				{
+					// A correct asset file _must_ return a table
+					if (!lua_istable(luaState, -1))
+					{
+						wereThereErrors = true;
+						std::cerr << "Asset files must return a table (instead of a " <<
+							luaL_typename(luaState, -1) << ")\n";
+						// Pop the returned non-table value
+						lua_pop(luaState, 1);
+						goto OnExit;
+					}
+				}
+				else
+				{
+					wereThereErrors = true;
+					std::cerr << "Asset files must return a single table (instead of " <<
+						returnedValueCount << " values)\n";
+					// Pop every value that was returned
+					lua_pop(luaState, returnedValueCount);
+					goto OnExit;
+				}
+			}
+			else
+			{
+				wereThereErrors = true;
+				std::cerr << lua_tostring(luaState, -1);
+				// Pop the error message
+				lua_pop(luaState, 1);
+				goto OnExit;
+			}
+		}
+
+		// If this code is reached the asset file was loaded successfully,
+		// and its table is now at index -1
+		if (!LoadTableValues(*luaState))
+		{
+			wereThereErrors = true;
+		}
+
+		// Pop the table
+		lua_pop(luaState, 1);
+
+	OnExit:
+
+		if (luaState)
+		{
+			// If I haven't made any mistakes
+			// there shouldn't be anything on the stack,
+			// regardless of any errors encountered while loading the file:
+			//assert(lua_gettop(luaState) == 0);
+
+			//lua_close(luaState);
+			//luaState = NULL;
+		}
+
+		return !wereThereErrors;
+	}
+
+	bool Mesh::LoadTableValues(lua_State& io_luaState)
+	{
+		if (!LoadTableValues_nested(io_luaState, "vertex_count"))
+		{
+			return false;
+		}
+
+		if (!LoadTableValues_nested(io_luaState, "vertex"))
+		{
+			return false;
+		}
+		return true;
+	}
+
+	bool Mesh::LoadTableValues_nested(lua_State& io_luaState, const char * field_value)
+	{
+		bool wereThereErrors = false;
+
+		lua_pushstring(&io_luaState, field_value);
+		lua_gettable(&io_luaState, -2);
+		if (lua_istable(&io_luaState, -1))
+		{
+			if (!LoadTableValues_parameters_values(io_luaState, field_value))
+			{
+				wereThereErrors = true;
+				goto OnExit;
+			}
+		}
+		else
+		{
+			//not a table
+			//wereThereErrors = true;
+			/*std::cerr << "The value at \"" << field_value << "\" must be a table "
+				"(instead of a " << luaL_typename(&io_luaState, -1) << ")\n";*/
+			float vertexValue = static_cast< float >(lua_tonumber(&io_luaState, -1));
+			wereThereErrors = false;
+			goto OnExit;
+		}
+	OnExit:
+		// Pop the textures table
+		lua_pop(&io_luaState, 1);
+		return !wereThereErrors;
+	}
+
+	bool Mesh::LoadTableValues_parameters_values(lua_State& io_luaState, const char * field_value)
+	{
+		if (strcmp(field_value, "vertex") == 0)
+		{
+			lua_pushnil(&io_luaState);
+			//std::cout << "in Para-2metres: \n";
+			std::cout << "Length " << luaL_len(&io_luaState,-2) << "\n";
+			int arrayLength = luaL_len(&io_luaState, -2);
+			if (arrayLength > 0)
+			//while (lua_next(&io_luaState, -2))
+			{
+				for (int i = 1; i <= arrayLength; ++i)
+				{
+					//lua_gettable(&io_luaState, -2);
+					//lua_pushinteger(&io_luaState, 1);
+					//lua_gettable(&io_luaState, -1);
+					//int number = static_cast<int>(lua_tonumber(&io_luaState, -1));
+					//lua_gettable(&io_luaState, -2);
+					if (lua_istable(&io_luaState, -2))
+					{
+						//lua_pop(&io_luaState, 1);
+						const char* key = "position";
+						lua_pushstring(&io_luaState, key);
+						//lua_gettable(&io_luaState, -2);
+						int counter = 0;
+						if (lua_istable(&io_luaState, -2))
+						{
+							counter = 0;
+						}
+						else
+						{
+							counter = static_cast<int>(lua_tonumber(&io_luaState, -1));
+						}
+						float key3[6] = {};
+						
+						int number = static_cast<int>(lua_tonumber(&io_luaState, -1));
+						if (lua_istable(&io_luaState, -1))
+						{
+							int counter = 0;
+							while (counter < 6)
+							{
+								lua_pushinteger(&io_luaState, counter + 1);
+								lua_gettable(&io_luaState, -2);
+								key3[counter] = static_cast<float>(lua_tonumber(&io_luaState, -1));
+								lua_pop(&io_luaState, 1);
+								counter++;
+							}
+						}
+						//std::cout << "VertexInfo is " << key2 << ": ";
+						for (int i = 0; i < 6; i++)
+						{
+							std::cout << key3[i] << ",";
+						}
+						//_rout->write((char*)&key3, sizeof(float)* 6);
+						std::cout << "\n";
+						lua_pop(&io_luaState, 1);
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	Mesh::~Mesh() {}
+}
